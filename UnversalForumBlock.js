@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         通用论坛屏蔽插件
+// @name:en      Universal Forum Block
 // @namespace    https://github.com/Heavrnl/UniversalForumBlock
 // @version      1.0.0
 // @description  通用的论坛贴子/用户屏蔽工具
+// @description:en  Universal forum post/user blocking tool
 // @author       Heavrnl
 // @match        *://*/*
 // @icon         data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiB2aWV3Qm94PSIwIDAgMzIgMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQogICAgPCEtLSBGaWx0ZXIgTGluZXMgLS0+DQogICAgPGcgc3Ryb2tlPSIjMjE5NmYzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+DQogICAgICAgIDxsaW5lIHgxPSI4IiB5MT0iMTAiIHgyPSIyNCIgeTI9IjEwIiBvcGFjaXR5PSIwLjE1Ii8+DQogICAgICAgIDxsaW5lIHgxPSI2IiB5MT0iMTYiIHgyPSIyNiIgeTI9IjE2IiBvcGFjaXR5PSIwLjE1Ii8+DQogICAgICAgIDxsaW5lIHgxPSI4IiB5MT0iMjIiIHgyPSIyNCIgeTI9IjIyIiBvcGFjaXR5PSIwLjE1Ii8+DQogICAgPC9nPg0KICAgIA0KICAgIDwhLS0gQmxvY2sgU3ltYm9sIC0tPg0KICAgIDxnIHN0cm9rZT0iIzIxOTZmMyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiPg0KICAgICAgICA8bGluZSB4MT0iMTAiIHkxPSIxNiIgeDI9IjIyIiB5Mj0iMTYiIHRyYW5zZm9ybT0icm90YXRlKDQ1IDE2IDE2KSIvPg0KICAgICAgICA8bGluZSB4MT0iMTAiIHkxPSIxNiIgeDI9IjIyIiB5Mj0iMTYiIHRyYW5zZm9ybT0icm90YXRlKC00NSAxNiAxNikiLz4NCiAgICA8L2c+DQo8L3N2Zz4g
