@@ -134,10 +134,10 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
         "usernames": false,          // 用户名编辑器
         "usernames_regex": false,    // 用户名正则编辑器
         "mainpage_url_patterns": false,  // 主页URL模式编辑器
-        "subpage_url_patterns": false,   // 子页URL模式编辑器
+        "subpage_url_patterns": false,   // 分页URL模式编辑器
         "contentpage_url_patterns": false, // 内容页URL模式编辑器
-        "main_and_sub_page_title_xpath": false,  // 主页和子页标题XPath编辑器
-        "main_and_sub_page_user_xpath": false,   // 主页和子页用户XPath编辑器
+        "main_and_sub_page_title_xpath": false,  // 主页和分页标题XPath编辑器
+        "main_and_sub_page_user_xpath": false,   // 主页和分页用户XPath编辑器
         "contentpage_title_xpath": false,        // 内容页标题XPath编辑器
         "contentpage_user_xpath": false          // 内容页用户XPath编辑器
       }
