@@ -95,9 +95,15 @@ Universal Forum Block 是一个功能强大的通用论坛内容过滤器。主�
 
 除了版本更新外，插件不会自动更新内置的网站配置，可以使用仓库中预设配置导入到全局配置中获取实时更新
 
-中文论坛:``https://github.com/``
+中文论坛:
+```
+https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/chinese/config.json
+```
 
-英文论坛:``https://github.com/``
+英文论坛:
+```
+https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/english/config.json
+```
 
 ....
 
