@@ -17,6 +17,11 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 
 <img src="../img/ui-img-en.png" width="300">
 
+## Usage Example:
+
+<img src="../img/test-gif01.gif" width="300">
+<img src="../img/test-gif02.gif" width="300">
+
 ## Table of Contents
 
   - [Introduction](#introduction)
