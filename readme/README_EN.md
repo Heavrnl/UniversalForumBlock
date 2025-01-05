@@ -22,18 +22,6 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 <img src="../img/test-gif01.gif" width="300">
 <img src="../img/test-gif02.gif" width="300">
 
-## Table of Contents
-
-  - [Introduction](#introduction)
-  - [Interface Preview](#interface-preview)
-  - [Usage Guide](#usage-guide)
-    - [Interface Description](#interface-description)
-    - [Supported Websites](#supported-websites)
-  - [Advanced Usage](#advanced-usage)
-    - [Configuration Template Guide](#configuration-template-guide)
-    - [Custom Website Configuration](#custom-website-configuration)
-  - [Donation](#donation)
-  - [License](#license)
 
 ## Usage Guide
 
@@ -43,6 +31,27 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 4. Find our panel in the bottom left corner of the website to start using
 
 > **Special note:** On configured forums, when hovering over a username, a block button will appear. Click it to block the user instantly. The display mode of the block button can be switched between "Always Show" or "Show on Hover" in the settings panel.
+
+## Supported Websites
+
+Chinese Forums: hostloc, v2ex, nodeseek, linux.do, nodeloc, nga, right.com.cn, 3dmgame, zhihu, douban, baidu tieba, bahamut
+
+English Forums: Lowendtalk, reddit
+
+If you need support for other websites, please raise an [issue](https://github.com/Heavrnl/UniversalForumBlock/issues) or refer to [Custom Website Configuration](#custom-website-configuration)
+
+**Except for version updates, the plugin won't automatically update built-in website configurations. You can import preset configurations from the repository to get real-time updates.**
+
+Chinese Forums:
+```
+https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/chinese/config.json
+```
+
+English Forums:
+```
+https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/english/config.json
+```
+
 
 ## Interface Description:
 
@@ -81,25 +90,7 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 | - Content Page Keywords | For matching keyword text in content pages |
 | - Content Page User | For matching usernames in content pages |
 
-## Supported Websites
 
-Chinese Forums: hostloc, v2ex, nodeseek, linux.do, nodeloc, nga, right.com.cn, 3dmgame, zhihu, douban, baidu tieba, bahamut
-
-English Forums: Lowendtalk, reddit
-
-If you need support for other websites, please raise an [issue](https://github.com/Heavrnl/UniversalForumBlock/issues) or refer to [Custom Website Configuration](#custom-website-configuration)
-
-**Except for version updates, the plugin won't automatically update built-in website configurations. You can import preset configurations from the repository to get real-time updates.**
-
-Chinese Forums:
-```
-https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/chinese/config.json
-```
-
-English Forums:
-```
-https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/english/config.json
-```
 
 ## Advanced Usage
 
