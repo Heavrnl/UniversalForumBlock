@@ -5500,10 +5500,10 @@
 
     // 添加面板设置配置
     let PANEL_SETTINGS = GM_getValue('panelSettings', {
-        offset: 2, // 百分比
+        offset: 1, // 百分比
         expandMode: 'hover', // 'hover' or 'click'
-        collapsedWidth: 70, // 收起状态的宽度
-        expandedWidth: 400, // 展开状态的宽度
+        collapsedWidth: 5, // 收起状态的宽度
+        expandedWidth: 300, // 展开状态的宽度
         showBlockButton: 'hover' // 'hover' or 'always'
     });
 
