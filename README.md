@@ -148,16 +148,16 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
         "domain": "",               // 域名（必填）
         "enabled": true,            // 是否启用
         "mainPageUrlPatterns": [],  // 主页URL匹配模式
-        "subPageUrlPatterns": [],   // 子页URL匹配模式
+        "subPageUrlPatterns": [],   // 分页URL匹配模式
         "contentPageUrlPatterns": [], // 内容页URL匹配模式
-        "shareKeywordsAcrossPages": false,  // 是否在页面间共享关键词
-        "shareUsernamesAcrossPages": true,  // 是否在页面间共享用户名
-        "mainAndSubPageKeywords": {   // 主页和子页关键词配置
+        "shareKeywordsAcrossPages": false,  // 是否在主页和分页页面间共享关键词
+        "shareUsernamesAcrossPages": true,  // 是否在主页和分页页面间共享用户名
+        "mainAndSubPageKeywords": {   // 主页和分页关键词配置
           "xpath": [],                // XPath规则列表
           "keywords": [],             // 关键词列表
           "regexPatterns": []         // 正则表达式列表
         },
-        "mainAndSubPageUserKeywords": {  // 主页和子页用户关键词配置
+        "mainAndSubPageUserKeywords": {  // 主页和分页用户关键词配置
           "xpath": [],
           "keywords": [],
           "regexPatterns": []
