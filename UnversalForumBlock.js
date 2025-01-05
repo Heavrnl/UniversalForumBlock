@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         通用论坛屏蔽脚本
+// @name         通用论坛屏蔽插件
 // @namespace    https://github.com/Heavrnl/forum-filter
 // @version      1.0.0
 // @description  通用的论坛贴子/用户屏蔽工具
@@ -39,7 +39,7 @@
         "TIME_INTERVAL": 30,
         "LANGUAGE": navigator.language,
         "SHOW_WORD_SEGMENTATION": false,
-        "GLOBAL_CONFIG_URL": [],
+        "GLOBAL_CONFIG_URL": ["https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/chinese/config.json","https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/english/config.json"],
         "CONFIG_SECTION_COLLAPSED":{
             "global_SECTION_COLLAPSED": true,
             "keywords_SECTION_COLLAPSED": true,
