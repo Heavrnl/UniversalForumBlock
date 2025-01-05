@@ -78,7 +78,7 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 
 ## Supported Websites
 
-Chinese Forums: hostloc, v2ex, nodeseek, linux.do, nodeloc, nga, right.com.cn, 3dmgame, zhihu, douban
+Chinese Forums: hostloc, v2ex, nodeseek, linux.do, nodeloc, nga, right.com.cn, 3dmgame, zhihu, douban, baidu tieba, bahamut
 
 English Forums: Lowendtalk, reddit
 
