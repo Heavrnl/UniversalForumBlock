@@ -180,6 +180,20 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 
 以上配置文件即可用于界面中的导入按钮直接导入，也可以在全局配置的配置连接中导入
 
+若想维护自己的屏蔽词列表，可以这样写
+
+```javascript
+{
+    "userConfig": [
+      {
+        "domain": "example.com",               
+        "mainAndSubPageKeywords": {   
+          "keywords": ["关键词1", "关键词2", "关键词3"],          
+        }
+      }
+    ]
+}
+```
 
 ### 自定义新网站
 

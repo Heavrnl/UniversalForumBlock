@@ -167,6 +167,21 @@ If userConfig is configured, domain is required. All other configuration items a
 
 This configuration file can be imported directly using the import button in the interface or imported in the configuration links in global configuration.
 
+If you want to maintain your own blocked word list, you can write it like this:
+
+```javascript
+{
+    "userConfig": [
+      {
+        "domain": "example.com",               
+        "mainAndSubPageKeywords": {   
+          "keywords": ["keyword1", "keyword2", "keyword3"],          
+        }
+      }
+    ]
+}
+```
+
 ### Custom Website Configuration
 
 #### 1. URL Pattern Configuration
