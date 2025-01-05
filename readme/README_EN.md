@@ -82,7 +82,7 @@ Chinese Forums: hostloc, v2ex, nodeseek, linux.do, nodeloc, nga, right.com.cn, 3
 
 English Forums: Lowendtalk, reddit
 
-If you need support for other websites, please raise an [issue](https://github.com/UniversalForumBlock/UniversalForumBlock/issues) or refer to [Custom Website Configuration](#custom-website-configuration)
+If you need support for other websites, please raise an [issue](https://github.com/Heavrnl/UniversalForumBlock/issues) or refer to [Custom Website Configuration](#custom-website-configuration)
 
 **Except for version updates, the plugin won't automatically update built-in website configurations. You can import preset configurations from the repository to get real-time updates.**
 
