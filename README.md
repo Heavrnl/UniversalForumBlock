@@ -3,7 +3,11 @@
 <h3><div align="center">通用论坛屏蔽插件 | Universal Forum Block</div>
 
 ---
-[中文](#简介) | [English](#introduction)
+
+<div align="center">
+  <a href="./README.md">中文</a> |
+  <a href="./readme/README_EN.md">English</a>
+</div>
 
 ## 简介
 
