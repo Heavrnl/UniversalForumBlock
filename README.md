@@ -91,7 +91,7 @@ Universal Forum Block 是一个功能强大的通用论坛内容屏蔽插件。�
 
 ## 支持的网站
 
-中文论坛：hostloc，v2ex，nodeseek，linux.do，nodeloc，nga，恩山，3dmgame，知乎，豆瓣，一亩三分地，巴哈姆特
+中文论坛：hostloc，v2ex，nodeseek，linux.do，nodeloc，nga，恩山，3dmgame，百度贴吧，知乎，豆瓣，一亩三分地，巴哈姆特
 
 英文论坛：Lowendtalk, reddit
 
