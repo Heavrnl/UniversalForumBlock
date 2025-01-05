@@ -3845,7 +3845,251 @@
 
         processChildren(element, 1);
     }
+
+    // 创建浮动面板
+    let showTimeout = null;
+    let hideTimeout = null;
+
+    function createFloatingPanel() {
+        console.log('创建浮动面板');
+        const panel = document.createElement('div');
+        panel.style.cssText = `
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 9999;
+            min-width: 200px;
+            max-height: 100px;
+            max-width: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            overflow-y: auto;  /* 添加垂直滚动条 */
+            align-content: flex-start;  /* 确保内容从顶部开始 */
+            }
+
+        `;
+        panel.className = 'ufb-floating-panel';
+        console.log('浮动面板样式设置完成');
+
+        panel.addEventListener('mouseenter', () => {
+            console.log('鼠标进入浮动面板');
+            if (hideTimeout) {
+                console.log('清除隐藏定时器');
+                clearTimeout(hideTimeout);
+                hideTimeout = null;
+            }
+        });
+
+        panel.addEventListener('mouseleave', () => {
+            console.log('鼠标离开浮动面板');
+            hideTimeout = setTimeout(() => {
+                console.log('隐藏浮动面板');
+                panel.style.display = 'none';
+            }, 100);
+        });
+
+        document.body.appendChild(panel);
+        console.log('浮动面板已添加到页面');
+        return panel;
+    }
+
+    function createWordButtons(text) {
+        console.log('开始创建分词按钮，文本:', text);
+        // 使用分词器分词
+        const segmenter = new Intl.Segmenter('zh', { granularity: 'word' });
+        const segments = Array.from(segmenter.segment(text));
+        console.log('分词结果:', segments);
+
+        // 创建按钮容器
+        const buttonsContainer = document.createDocumentFragment();
+
+        segments.forEach(segment => {
+            if (segment.segment.trim()) {  // 忽略空白字符
+                console.log('创建按钮:', segment.segment);
+                const button = document.createElement('button');
+                button.textContent = segment.segment;
+                button.style.cssText = `
+                    margin: 2px;
+                    padding: 4px 8px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    background: #f5f5f5;
+                    cursor: pointer;
+                    font-size: 14px;
+                `;
+
+                // 添加按钮点击事件
+                button.addEventListener('click', () => {
+                    console.log('点击了分词按钮:', segment.segment);
+                    // 这里可以添加更多按钮点击后的操作
+                });
+
+                // 添加鼠标悬停效果
+                button.addEventListener('mouseenter', () => {
+                    console.log('鼠标进入按钮:', segment.segment);
+                    button.style.background = '#e0e0e0';
+                });
+                button.addEventListener('mouseleave', () => {
+                    console.log('鼠标离开按钮:', segment.segment);
+                    button.style.background = '#f5f5f5';
+                });
+
+                buttonsContainer.appendChild(button);
+            }
+        });
+
+        console.log('分词按钮创建完成');
+        return buttonsContainer;
+    }
+
+    function addsegmentwordtoPanel(xpath) {
+        console.log('开始添加分词到面板, xpath:', xpath);
+        // xpath = '//li[@class="post-list-item"]//div[@class="post-title"]//a/text()';
+        if (!xpath) {
+            console.log('xpath为空，返回');
+            return;
+        }
+        
+        let cleanXPath = xpath;
+        let isText = false;
+        let isAttr = false;
+        // 检查xpath是否以/text()结尾
+        if (xpath.endsWith('/text()')) {
+            cleanXPath = xpath.replace(/\/text\(\)$/, '');
+            isText = true;
+            console.log('处理text()结尾的xpath:', cleanXPath);
+        }
+        // 检查并移除属性选择器部分 (/@...)
+        if (cleanXPath.includes('/@')) {
+            cleanXPath = cleanXPath.split('/@')[0];
+            isAttr = true;
+            console.log('处理属性选择器的xpath:', cleanXPath);
+        }
+        const targetElements = document.evaluate(
+            cleanXPath,
+            document,
+            null,
+            XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+            null
+        );
+        console.log('找到目标元素数量:', targetElements.snapshotLength);
     
+        for (let i = 0; i < targetElements.snapshotLength; i++) {
+            console.log('处理第', i + 1, '个元素');
+            const element = targetElements.snapshotItem(i);
+            element.style.cssText = `
+                display: inline;
+            `;
+            let titleText;
+            if(isText){
+                titleText = element.textContent;
+                console.log('获取文本内容:', titleText);
+            }
+            if(isAttr){
+                titleText = element.getAttribute(xpath.split('/@')[1]);
+                console.log('获取属性值:', titleText);
+            }
+            element.addEventListener('mouseenter', (e) => {
+                if (showTimeout) {
+                    clearTimeout(showTimeout);
+                }
+                
+                showTimeout = setTimeout(() => {
+                    const floatingPanel = document.querySelector('.ufb-floating-panel');
+                    floatingPanel.innerHTML = '';
+                    floatingPanel.appendChild(createWordButtons(titleText));
+                    floatingPanel.style.display = 'block';
+    
+                    // 计算面板位置
+                    const padding = 25;
+                    let panelLeft = e.pageX - (floatingPanel.offsetWidth / 2);
+                    let panelTop = e.pageY - floatingPanel.offsetHeight - padding;
+    
+                    // 确保面板不会超出页面边界
+                    const maxWidth = document.documentElement.scrollWidth;
+                    if (panelLeft < 0) {
+                        panelLeft = 0;
+                    } else if (panelLeft + floatingPanel.offsetWidth > maxWidth) {
+                        panelLeft = maxWidth - floatingPanel.offsetWidth;
+                    }
+    
+                    if (panelTop < 0) {
+                        panelTop = e.pageY + padding;
+                    }
+    
+                    // 更新面板位置
+                    floatingPanel.style.left = `${panelLeft}px`;
+                    floatingPanel.style.top = `${panelTop}px`;
+    
+                    // 创建bridge元素
+                    const bridgeElement = document.createElement('div');
+                    bridgeElement.className = 'ufb-bridge';
+                    bridgeElement.style.cssText = `
+                        position: absolute;
+                        left: ${panelLeft}px;
+                        top: ${panelTop + floatingPanel.offsetHeight}px;
+                        width: ${floatingPanel.offsetWidth}px;
+                        height: ${padding}px;
+                        z-index: 9998;
+                        
+                    `;
+                    document.body.appendChild(bridgeElement);
+    
+                    // 当面板隐藏时移除bridge
+                    const removeBridge = () => {
+                        const bridge = document.querySelector('.ufb-bridge');
+                        if (bridge) {
+                            bridge.remove();
+                        }
+                    };
+    
+                    // 监听面板和bridge的鼠标事件
+                    floatingPanel.addEventListener('mouseleave', () => {
+                        floatingPanel.style.display = 'none';
+                        removeBridge();
+                    });
+    
+                    bridgeElement.addEventListener('mouseleave', (e) => {
+                        // 检查鼠标是否移动到了面板上
+                        if (!floatingPanel.contains(e.relatedTarget)) {
+                            floatingPanel.style.display = 'none';
+                            removeBridge();
+                        }
+                    });
+                }, 500);
+            });
+    
+            element.addEventListener('mouseleave', (e) => {
+                // 检查鼠标是否移动到了面板或bridge上
+                const toElement = e.relatedTarget;
+                const floatingPanel = document.querySelector('.ufb-floating-panel');
+                const bridge = document.querySelector('.ufb-bridge');
+                
+                if (!floatingPanel?.contains(toElement) && !bridge?.contains(toElement)) {
+                    if (showTimeout) {
+                        clearTimeout(showTimeout);
+                        showTimeout = null;
+                    }
+                    
+                    if (floatingPanel) {
+                        floatingPanel.style.display = 'none';
+                    }
+                    if (bridge) {
+                        bridge.remove();
+                    }
+                }
+            });
+    
+        }
+        console.log('分词面板处理完成');
+    }
+
+
+   
     
 
     // 为用户名添加屏蔽按钮
@@ -4199,6 +4443,7 @@
             removeCSS('.collapsed', 'display', 'none');
         }
     }
+    
 
 
     // 主要的处理函数
@@ -4322,6 +4567,7 @@
                 if (currentConfig.mainAndSubPageKeywords?.xpath?.length > 0) {
                     console.log('处理主页/子页面的关键词');
                     currentConfig.mainAndSubPageKeywords.xpath.forEach(xpath => {
+                        addsegmentwordtoPanel(xpath);
                         if (keywords?.length > 0) {
                             keywords.forEach(keyword => {
                                 removeElementsByText(xpath, keyword, false);
@@ -4341,6 +4587,8 @@
                     currentConfig.mainAndSubPageUserKeywords.xpath.forEach(xpath => {
                         // 添加屏蔽按钮
                         addBlockButtonsToUsernames(xpath, false);
+                        
+                        // addSplit(xpath, false); 
                         if (usernames?.length > 0) {
                             usernames.forEach(keyword => {
                                 console.log('处理主页/子页面的用户关键词', keyword);
@@ -4362,6 +4610,7 @@
                 if (currentConfig.contentPageKeywords?.xpath?.length > 0) {
                     console.log('处理内容页面的关键词');
                     currentConfig.contentPageKeywords.xpath.forEach(xpath => {
+                        addsegmentwordtoPanel(xpath);
                         if (keywords?.length > 0) {
                             keywords.forEach(keyword => {
                                 removeElementsByText(xpath, keyword, false);
@@ -4381,6 +4630,8 @@
                     currentConfig.contentPageUserKeywords.xpath.forEach(xpath => {
                         // 添加屏蔽按钮
                         addBlockButtonsToUsernames(xpath, true);
+                   
+                       
                         if (usernames?.length > 0) {
                             usernames.forEach(keyword => {
                                 removeElementsByText(xpath, keyword, false);
@@ -5531,9 +5782,9 @@
         document.getElementById('settings-cancel').addEventListener('click', function() {
             // 恢复原始设置
             PANEL_SETTINGS = GM_getValue('panelSettings', {
-                offset: 10,
+                offset: 0,
                 expandMode: 'hover',
-                collapsedWidth: 70,
+                collapsedWidth: 10,
                 expandedWidth: 400
             });
             applyPanelSettings();
@@ -5877,10 +6128,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             createSettingsPanel();
             createControlPanel();
+            createFloatingPanel();
         });
     } else {
         createSettingsPanel();
         createControlPanel();
+        createFloatingPanel();
     }
 
     function getSplitUrl(){
