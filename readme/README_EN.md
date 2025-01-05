@@ -33,7 +33,7 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 ## Usage Guide
 
 1. Install a script manager (like Tampermonkey)
-2. Click [Install Script]()
+2. Click to go to GreasyFork [Install Script](https://greasyfork.org/scripts/522871-%E9%80%9A%E7%94%A8%E8%AE%BA%E5%9D%9B%E5%B1%8F%E8%94%BD%E6%8F%92%E4%BB%B6)
 3. Visit supported forum websites
 4. Find our panel in the bottom left corner of the website to start using
 

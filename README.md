@@ -45,7 +45,7 @@ Universal Forum Block 是一个功能强大的通用论坛内容屏蔽插件。�
 ## 使用方法
 
 1. 安装脚本管理器（如 Tampermonkey）
-2. 点击 [安装脚本]()
+2. 点击前往GreasyFork [安装脚本](https://greasyfork.org/scripts/522871-%E9%80%9A%E7%94%A8%E8%AE%BA%E5%9D%9B%E5%B1%8F%E8%94%BD%E6%8F%92%E4%BB%B6)
 3. 访问支持的论坛网站
 4. 在网站左下角找到我们的面板开始使用
 
