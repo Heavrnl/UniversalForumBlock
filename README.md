@@ -27,6 +27,11 @@ Universal Forum Block 是一个功能强大的通用论坛内容屏蔽插件。�
 
 <img src="./img/ui-img-cn.png" width="300">
 
+## 使用示例
+
+<img src="./img/test-gif01.gif" width="300">
+<img src="./img/test-gif02.gif" width="300">
+
 ## 目录
 
   - [简介](#简介)
@@ -50,6 +55,7 @@ Universal Forum Block 是一个功能强大的通用论坛内容屏蔽插件。�
 4. 在网站左下角找到我们的面板开始使用
 
 > **特殊说明**：在已配置的论坛中，当鼠标移动到用户名上时会出现屏蔽按钮，点击即可一键屏蔽该用户。屏蔽按钮的显示方式可在设置面板中切换为"总是显示"或"悬停显示"。
+
 
 ## 界面说明:
 
