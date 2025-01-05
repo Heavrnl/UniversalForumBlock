@@ -1,0 +1,45 @@
+{
+	"userConfig": [
+		{
+            "domain": "lowendtalk.com",
+            "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/$'],
+            "subPageUrlPatterns": ['/discussions/p*','^/categories/[^/]+/?$'],
+            "contentPageUrlPatterns": ['^/discussion/\d+/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//li//div[@class="Title"]//a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//li//span[contains(@class, 'DiscussionAuthor')]//a/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//li//div[@class='Item-Body']//p/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//li//a[@class="Username"]/text()']
+            }
+        },
+        {
+            "domain": "www.reddit.com",
+            "mainPageUrlPatterns": ['^/$','feed=home','^/r/[^/]+/$'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/r/.*/comments/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//article[@aria-label]/@aria-label']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": []
+            },
+            "contentPageKeywords": {
+                "xpath": ['//shreddit-comment//div[@slot="comment"]//p/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//shreddit-comment//faceplate-tracker[@source="post_detail"]//a/text()']
+            }
+        }
+        
+	]
+}
+
+
+
+

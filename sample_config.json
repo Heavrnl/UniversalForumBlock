@@ -1,0 +1,61 @@
+{
+    "globalConfig": {
+      "GLOBAL_KEYWORDS": false,
+      "GLOBAL_USERNAMES": false,
+      "SHOW_BLOCK_BUTTON": "hover",
+      "TIME_INTERVAL": 30,
+      "LANGUAGE": "zh-CN",
+      "GLOBAL_CONFIG_URL": [],
+      "CONFIG_SECTION_COLLAPSED": {
+        "global_SECTION_COLLAPSED": true,
+        "keywords_SECTION_COLLAPSED": true,
+        "usernames_SECTION_COLLAPSED": true,
+        "url_SECTION_COLLAPSED": true,
+        "xpath_SECTION_COLLAPSED": true
+      },
+      "EDITOR_STATES": {
+        "keywords": false,
+        "keywords_regex": false,
+        "usernames": false,
+        "usernames_regex": false,
+        "mainpage_url_patterns": false,
+        "subpage_url_patterns": false,
+        "contentpage_url_patterns": false,
+        "main_and_sub_page_title_xpath": false,
+        "main_and_sub_page_user_xpath": false,
+        "contentpage_title_xpath": false,
+        "contentpage_user_xpath": false
+      }
+    },
+    "userConfig": [
+      {
+        "domain": "",
+        "enabled": true,
+        "mainPageUrlPatterns": [],
+        "subPageUrlPatterns": [],
+        "contentPageUrlPatterns": [],
+        "shareKeywordsAcrossPages": false,
+        "shareUsernamesAcrossPages": true,
+        "mainAndSubPageKeywords": {
+          "xpath": [],
+          "keywords": [],
+          "regexPatterns": []
+        },
+        "mainAndSubPageUserKeywords": {
+          "xpath": [],
+          "keywords": [],
+          "regexPatterns": []
+        },
+        "contentPageKeywords": {
+          "xpath": [],
+          "keywords": [],
+          "regexPatterns": []
+        },
+        "contentPageUserKeywords": {
+          "xpath": [],
+          "keywords": [],
+          "regexPatterns": []
+        }
+      }
+    ]
+  }

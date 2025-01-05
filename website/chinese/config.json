@@ -1,0 +1,211 @@
+{
+	"userConfig": [
+		{
+            "domain": "linux.do",
+            "mainPageUrlPatterns": ['^(?!.*\/t\/topic\/).*',],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/t/topic/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//tr[@data-topic-id]//a[@role="heading"]//span/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//tr[@data-topic-id]//td[@class="posters topic-list-data"]//a[@data-user-card]/@data-user-card']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div//article[@role="region"]//p[@dir="auto"]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div//article[@role="region"]//div[@role="heading"]//a[@data-user-card]/@data-user-card']
+            }
+        },
+        {
+            "domain": "nodeseek.com",
+            "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/?$','^/search.*'],
+            "subPageUrlPatterns": ['/page*'],
+            "contentPageUrlPatterns": ['/post*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//li[@class="post-list-item"]//div[@class="post-title"]//a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//li[@class="post-list-item"]//div[@class="post-info"]//a/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//li[@class="content-item"]//article[@class="post-content"]//p/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//li[@class="content-item"]//a[@class="author-name"]/text()']
+            }
+        },
+        {
+            "domain": "nodeloc.com",
+            "mainPageUrlPatterns": ['^/$','^/t/.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/d/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//li//h2[@class="DiscussionListItem-title"]/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//li//a[@class="DiscussionListItem-author"]/split(" ",0,data-original-title)']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div[@class="PostStream-item"]//div[@class="Post-body"]//p/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div[@class="PostStream-item"]//li[@class="item-user"]//span/text()']
+            }
+        },
+        {
+            "domain": "hostloc.com",
+            "mainPageUrlPatterns": ['^/forum-.*$','/forum\.php\?mod=forumdisplay.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/thread-.*$','/forum\.php\?mod=viewthread.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
+            }
+        },
+        {
+            "domain": "bbs.3dmgame.com",
+            "mainPageUrlPatterns": ['^/forum-.*$','/forum\.php\?mod=forumdisplay.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/thread-.*$','/forum\.php\?mod=viewthread.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
+            }
+        },
+        {
+            "domain": "right.com.cn",
+            "mainPageUrlPatterns": ['^/forum/forum-.*$'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/forum/thread-.*$'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
+            }
+        },
+        {
+            "domain": "bbs.nga.cn",
+            "mainPageUrlPatterns": ['^/thread.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/read.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//tbody//a[@class="topic"]/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//tbody//a[@class="author"]/split(" ",1,title)']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//tbody//span[contains(@class,"postcontent")]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//tbody//a[contains(@class,"userlink")]/split(=,-1,href)']
+            }
+        },
+        {
+            "domain": "tieba.baidu.com",
+            "mainPageUrlPatterns": ['^/f\?kw=.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/p/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//li//div[@class="threadlist_title pull_left j_th_tit "]//a[@class="j_th_tit "]/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//li//span[@class="frs-author-name-wrap"]//a[contains(@class,"frs-author-name")]/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div//div[@class="d_post_content_main "]//div[@class="d_post_content j_d_post_content "]/text()',
+                            '//li//span[@class="lzl_content_main"]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div//div[@class="d_author"]//a[@alog-group="p_author"]/text()',
+                            '//li//a[@alog-group="p_author"]/text()']
+            }
+        },
+        {
+            "domain": "v2ex.com",
+            "mainPageUrlPatterns": ['^/$','^/\?tab=.*','^/recent.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/t/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//div[@class="cell item"]//span[@class="item_title"]/a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//div[@class="cell item"]//span[@class="topic_info"]//strong//a/text()','//div[@class="cell item"]//strong/a/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div[@class="cell"]//div[@class="reply_content"]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div[@class="cell"]//strong/a/text()']
+            }
+        },
+        {
+            "domain": "www.zhihu.com",
+            "mainPageUrlPatterns": ['^/$','^/hot.*','^/follow.*','^/zvideo.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/question/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//div[@class="Card TopstoryItem TopstoryItem-isRecommend"]//a[@data-za-detail-view-element_name="Title"]/text()',
+                            '//section[@class="HotItem"]//h2[@class="HotItem-title"]/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//div[@class="Card TopstoryItem TopstoryItem-isRecommend"]//a[@class="UserLink-link"]/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div[@class="List-item"]//div[@class="RichContent-inner"]//span/p/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div[@class="List-item"]//a[@class="UserLink-link"]/text()']
+            }
+        },
+        {
+            "domain": "www.douban.com",
+            "mainPageUrlPatterns": ['^/group/explore.*','^/group/\d+/.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/group/topic/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//div[@class="channel-item"]//div[@class="bd"]//h3//a/text()',
+                            '//tr//td[@class="title"]//a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//tr//td[@nowrap]//a/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//li//div[@class="reply-content"]//p/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//li//h4//a/text()']
+            }
+        }
+        
+	]
+}
+
+
+
+
