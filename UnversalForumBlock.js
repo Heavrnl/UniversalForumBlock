@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         通用论坛屏蔽插件
-// @namespace    https://github.com/Heavrnl/forum-filter
+// @namespace    https://github.com/Heavrnl/UniversalForumBlock
 // @version      1.0.0
 // @description  通用的论坛贴子/用户屏蔽工具
 // @author       Heavrnl
