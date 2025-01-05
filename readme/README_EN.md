@@ -37,7 +37,7 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 3. Visit supported forum websites
 4. Find our panel in the bottom left corner of the website to start using
 
-Special note: On configured forums, when hovering over a username, a block button will appear. Click it to block the user instantly. The display mode of the block button can be switched between "Always Show" or "Show on Hover" in the settings panel.
+> **Special note:** On configured forums, when hovering over a username, a block button will appear. Click it to block the user instantly. The display mode of the block button can be switched between "Always Show" or "Show on Hover" in the settings panel.
 
 ## Interface Description:
 
@@ -84,7 +84,7 @@ English Forums: Lowendtalk, reddit
 
 If you need support for other websites, please raise an [issue](https://github.com/UniversalForumBlock/UniversalForumBlock/issues) or refer to [Custom Website Configuration](#custom-website-configuration)
 
-Except for version updates, the plugin won't automatically update built-in website configurations. You can import preset configurations from the repository to get real-time updates.
+**Except for version updates, the plugin won't automatically update built-in website configurations. You can import preset configurations from the repository to get real-time updates.**
 
 Chinese Forums:
 ```
