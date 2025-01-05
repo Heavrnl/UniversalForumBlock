@@ -36,7 +36,7 @@
         "GLOBAL_KEYWORDS": false,
         "GLOBAL_USERNAMES": false,
         "SHOW_BLOCK_BUTTON": "hover",
-        "TIME_INTERVAL": 30,
+        "TIME_INTERVAL": 120,
         "LANGUAGE": navigator.language,
         "SHOW_WORD_SEGMENTATION": false,
         "GLOBAL_CONFIG_URL": ["https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/chinese/config.json","https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/english/config.json"],
