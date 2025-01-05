@@ -19,7 +19,7 @@
             }
         },
         {
-            "domain": "www.reddit.com",
+            "domain": "reddit.com",
             "mainPageUrlPatterns": ['^/$','feed=home','^/r/[^/]+/$'],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/r/.*/comments/.*'],

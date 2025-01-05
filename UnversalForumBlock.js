@@ -263,7 +263,25 @@
             }
         },
         {
-            "domain": "www.zhihu.com",
+            "domain": "1point3acres.com",
+            "mainPageUrlPatterns": ['^/bbs/forum-.*$','/bbs/forum\.php\?mod=forumdisplay.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/bbs/thread-.*$','/bbs/forum\.php\?mod=viewthread.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
+            }
+        },
+        {
+            "domain": "zhihu.com",
             "mainPageUrlPatterns": ['^/$','^/hot.*','^/follow.*','^/zvideo.*'],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/question/.*'],
@@ -282,7 +300,7 @@
             }
         },
         {
-            "domain": "www.douban.com",
+            "domain": "douban.com",
             "mainPageUrlPatterns": ['^/group/explore.*','^/group/\d+/.*'],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/group/topic/.*'],
@@ -298,6 +316,24 @@
             },
             "contentPageUserKeywords": {
                 "xpath": ['//li//h4//a/text()']
+            }
+        },
+        {
+            "domain": "forum.gamer.com.tw",
+            "mainPageUrlPatterns": ['^/B.php.*'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/C.php.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//tr//p[@class="b-list__main__title"]/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//tr//p[@class="b-list__count__user"]/a/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//section//div[@class="c-article__content"]/text()','//div[@class="c-reply__item"]//span[@class="comment_content"]/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//section//a[@class="username"]/text()','//div[@class="c-reply__item"]//a[@class="reply-content__user"]/text()']
             }
         }
     ]
