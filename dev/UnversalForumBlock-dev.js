@@ -5687,7 +5687,7 @@
             </div>
             <div class="setting-group">
                 <label>展开宽度</label>
-                <input type="range" id="expanded-width" min="100" max="${/Mobile|Android|iPhone/i.test(navigator.userAgent) ? '400' : '1000'}" step="10" value="${PANEL_SETTINGS.expandedWidth}">
+                <input type="range" id="expanded-width" min="100" max="1000" step="10" value="${PANEL_SETTINGS.expandedWidth}">
                 <div class="expanded-width-value">${PANEL_SETTINGS.expandedWidth}px</div>
             </div>
             <div class="buttons">
