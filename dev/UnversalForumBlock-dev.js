@@ -5520,9 +5520,8 @@
         const panel = document.getElementById('forum-filter-panel');
         if (!panel) return;
 
-        // 设置水平位置为屏幕中间
-        const screenWidth = window.innerWidth;
-        panel.style.left = `${(screenWidth - panel.offsetWidth) / 2}px`;
+        // 设置水平位置为最左边
+        panel.style.left = '0';
 
         // 设置展开模式
         if (PANEL_SETTINGS.expandMode === 'click') {
@@ -5679,8 +5678,8 @@
             </div>
             <div class="setting-group">
                 <label>收起宽度</label>
-                <input type="range" id="collapsed-width" min="50" max="1000" step="10" value="${PANEL_SETTINGS.collapsedWidth}">
-                <div class="collapsed-width-value">${PANEL_SETTINGS.collapsedWidth}px</div>
+                <input type="range" id="collapsed-width" min="50" max="50" step="10" value="${PANEL_SETTINGS.collapsedWidth}">
+                <div class="collapsed-width-value">50px</div>
             </div>
             <div class="setting-group">
                 <label>展开宽度</label>
@@ -5749,7 +5748,7 @@
             const tempSettings = {
                 expandMode: document.getElementById('expand-mode').value,
                 showBlockButton: document.getElementById('show-block-button').value,
-                offset: Math.max(0, Math.min(100, (window.innerWidth - parseInt(document.getElementById('position-offset').value)) / 2 / window.innerWidth * 100)),
+                offset: parseInt(document.getElementById('position-offset').value),
                 collapsedWidth: parseInt(document.getElementById('collapsed-width').value),
                 expandedWidth: parseInt(document.getElementById('expanded-width').value)
             };
