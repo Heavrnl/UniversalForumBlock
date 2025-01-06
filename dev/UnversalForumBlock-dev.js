@@ -54,12 +54,14 @@
         #forum-filter-panel:not(.click-mode):focus-within {
             transform: translateY(0);
             width: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400;
+            max-width: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? Math.min(290, window.innerWidth * 0.9) : undefined;
         }
 
         /* 点击模式的展开效果 */
         #forum-filter-panel.click-mode.expanded {
             transform: translateY(0) !important;
             width: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400;
+            max-width: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? Math.min(290, window.innerWidth * 0.9) : undefined;
         }
 
         /* 收起状态的宽度 */
