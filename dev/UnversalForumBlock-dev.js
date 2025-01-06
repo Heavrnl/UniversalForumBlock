@@ -5502,9 +5502,9 @@
 
     // 添加面板设置配置
     let PANEL_SETTINGS = GM_getValue('panelSettings', {
-        offset: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 0 : 10, // 百分比,手机端0,PC端10,
-        expandMode: 'click', // 'hover' or 'click'
-        collapsedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 30 : 70, // 收起状态的宽度,手机端30,PC端70
+        offset: 2, // 百分比
+        expandMode: 'hover', // 'hover' or 'click'
+        collapsedWidth: 70, // 收起状态的宽度
         expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400, // 展开状态的宽度,手机端290,PC端400
         showBlockButton: 'hover' // 'hover' or 'always'
     });
@@ -5785,7 +5785,7 @@
             // 恢复原始设置
             PANEL_SETTINGS = GM_getValue('panelSettings', {
                 offset: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 0 : 10, // 展开状态的宽度,手机端0,PC端10,
-                expandMode: 'click',
+                expandMode: 'hover',
                 collapsedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 30 : 70, // 展开状态的宽度,手机端30,PC端70
                 expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400, // 展开状态的宽度,手机端290,PC端400
             });
