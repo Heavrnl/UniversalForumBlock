@@ -501,6 +501,7 @@
             background: #f8f9fa !important;
             border-radius: 4px !important;
             position: relative !important;
+            text-align: left !important;
         }
 
         .domain-info h4 {
@@ -850,6 +851,31 @@
           font-weight: unset !important;
         }
 
+        
+
+        .domain-info input[type="checkbox"]{
+
+            visibility: visible !important;
+        }
+
+        .domain-info input[type="checkbox"]:checked::after{
+            content: '' !important;
+            position: absolute !important;
+            left: 5px !important;
+            top: 1px !important;
+            width: 4px !important;
+            height: 8px !important;
+            border: solid white !important;
+            border-width: 0 2px 2px 0 !important;
+            transform: rotate(45deg) !important;
+            background-color: transparent !important;
+        }
+
+
+        .domain-info input[type="checkbox"]::after{
+            border: solid transparent !important;
+        }
+
         .checkbox-row input[type="checkbox"] {
             padding: 0 !important;
             position: absolute !important;
@@ -862,30 +888,27 @@
             cursor: pointer !important;
             opacity: 1 !important;
             z-index: 1 !important;
-            appearance: none !important;
-            -webkit-appearance: none !important;
+
+
             border: 2px solid #ccc !important;
             border-radius: 3px !important;
             background-color: #fff !important;
             transition: all 0.2s ease-in-out !important;
+            visibility: visible !important;
         }
 
-        .checkbox-row input[type="checkbox"]:checked {
-            background-color: #2196F3 !important;
-            border-color: #2196F3 !important;
-        }
-
-        .checkbox-row input[type="checkbox"]:checked::after {
+        .checkbox-row input[type="checkbox"]::after {
             content: '' !important;
-            position: absolute !important;
-            left: 5px !important;
-            top: 1px !important;
-            width: 4px !important;
-            height: 8px !important;
-            border: solid white !important;
-            border-width: 0 2px 2px 0 !important;
-            transform: rotate(45deg) !important;
+            border: solid transparent !important;
         }
+
+        
+
+        .checkbox-row input[type="checkbox"]:checked::after{
+            background-color: transparent !important;
+        }
+
+        
 
         .checkbox-row input[type="checkbox"]:hover {
             border-color: #2196F3 !important;
@@ -1742,6 +1765,14 @@
         .external-links{
             align-items: flex-start !important;
         }
+
+        .global-url-input-row button{
+            white-space: nowrap !important;
+        }
+
+   
+
+        
 
     `);
 
