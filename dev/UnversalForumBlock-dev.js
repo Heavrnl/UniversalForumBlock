@@ -5520,8 +5520,8 @@
         const panel = document.getElementById('forum-filter-panel');
         if (!panel) return;
 
-        // 设置水平位置
-        panel.style.left = PANEL_SETTINGS.offset + '%';
+        // 设置水平位置为最左边
+        panel.style.left = '0';
 
         // 设置展开模式
         if (PANEL_SETTINGS.expandMode === 'click') {
@@ -5673,8 +5673,8 @@
             </div>
             <div class="setting-group">
                 <label>水平位置</label>
-                <input type="range" id="position-offset" min="0" max="90" value="${PANEL_SETTINGS.offset}">
-                <div class="position-value">${PANEL_SETTINGS.offset}%</div>
+                <input type="range" id="position-offset" min="0" max="90" value="0">
+                <div class="position-value"></div>
             </div>
             <div class="setting-group">
                 <label>收起宽度</label>
