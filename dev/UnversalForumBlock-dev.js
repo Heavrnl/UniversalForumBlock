@@ -5520,8 +5520,9 @@
         const panel = document.getElementById('forum-filter-panel');
         if (!panel) return;
 
-        // 设置水平位置为最左边
-        panel.style.left = '0';
+        // 设置水平位置为屏幕中间
+        const screenWidth = window.innerWidth;
+        panel.style.left = `${(screenWidth - panel.offsetWidth) / 2}px`;
 
         // 设置展开模式
         if (PANEL_SETTINGS.expandMode === 'click') {
@@ -5748,7 +5749,7 @@
             const tempSettings = {
                 expandMode: document.getElementById('expand-mode').value,
                 showBlockButton: document.getElementById('show-block-button').value,
-                offset: parseInt(document.getElementById('position-offset').value),
+                offset: Math.max(0, Math.min(100, (window.innerWidth - parseInt(document.getElementById('position-offset').value)) / 2 / window.innerWidth * 100)),
                 collapsedWidth: parseInt(document.getElementById('collapsed-width').value),
                 expandedWidth: parseInt(document.getElementById('expanded-width').value)
             };
