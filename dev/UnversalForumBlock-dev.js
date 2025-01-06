@@ -5505,7 +5505,7 @@
         offset: 2, // 百分比
         expandMode: 'hover', // 'hover' or 'click'
         collapsedWidth: 70, // 收起状态的宽度
-        expandedWidth: 400, // 展开状态的宽度
+        expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 200 : 400, // 展开状态的宽度,手机端200,PC端400
         showBlockButton: 'hover' // 'hover' or 'always'
     });
 
@@ -5685,7 +5685,7 @@
             </div>
             <div class="setting-group">
                 <label>展开宽度</label>
-                <input type="range" id="expanded-width" min="300" max="1000" step="10" value="${PANEL_SETTINGS.expandedWidth}">
+                <input type="range" id="expanded-width" min="100" max="1000" step="10" value="${PANEL_SETTINGS.expandedWidth}">
                 <div class="expanded-width-value">${PANEL_SETTINGS.expandedWidth}px</div>
             </div>
             <div class="buttons">
@@ -5787,7 +5787,7 @@
                 offset: 10,
                 expandMode: 'hover',
                 collapsedWidth: 70,
-                expandedWidth: 400
+                expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 200 : 400, // 展开状态的宽度,手机端200,PC端400
             });
             applyPanelSettings();
             settingsPanel.classList.remove('visible');
