@@ -5502,7 +5502,7 @@
     let PANEL_SETTINGS = GM_getValue('panelSettings', {
         offset: 2, // 百分比
         expandMode: 'hover', // 'hover' or 'click'
-        collapsedWidth: 70, // 收起状态的宽度
+        collapsedWidth: 10, // 收起状态的宽度
         expandedWidth: 400, // 展开状态的宽度
         showBlockButton: 'hover' // 'hover' or 'always'
     });
@@ -5610,7 +5610,7 @@
         style.textContent = `
             #forum-filter-panel.click-mode:not(.expanded),
             #forum-filter-panel:not(.click-mode):not(:hover):not(:focus-within) {
-                width: ${PANEL_SETTINGS.collapsedWidth}px;
+                width: 10px;
             }
             #forum-filter-panel:not(.click-mode):hover,
             #forum-filter-panel:not(.click-mode):focus-within,
@@ -5678,7 +5678,7 @@
             </div>
             <div class="setting-group">
                 <label>收起宽度</label>
-                <input type="range" id="collapsed-width" min="50" max="50" step="10" value="${PANEL_SETTINGS.collapsedWidth}">
+                <input type="range" id="collapsed-width" min="50" max="50" step="10" value="10">
                 <div class="collapsed-width-value">50px</div>
             </div>
             <div class="setting-group">
@@ -5749,7 +5749,7 @@
                 expandMode: document.getElementById('expand-mode').value,
                 showBlockButton: document.getElementById('show-block-button').value,
                 offset: parseInt(document.getElementById('position-offset').value),
-                collapsedWidth: parseInt(document.getElementById('collapsed-width').value),
+                collapsedWidth: 10,
                 expandedWidth: parseInt(document.getElementById('expanded-width').value)
             };
 
@@ -5784,7 +5784,7 @@
             PANEL_SETTINGS = GM_getValue('panelSettings', {
                 offset: 10,
                 expandMode: 'hover',
-                collapsedWidth: 70,
+                collapsedWidth: 10,
                 expandedWidth: 400
             });
             applyPanelSettings();
