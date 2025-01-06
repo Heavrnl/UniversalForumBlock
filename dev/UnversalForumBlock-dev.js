@@ -5505,7 +5505,7 @@
         offset: 2, // 百分比
         expandMode: 'hover', // 'hover' or 'click'
         collapsedWidth: 70, // 收起状态的宽度
-        expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 200 : 400, // 展开状态的宽度,手机端200,PC端400
+        expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400, // 展开状态的宽度,手机端290,PC端400
         showBlockButton: 'hover' // 'hover' or 'always'
     });
 
@@ -5787,7 +5787,7 @@
                 offset: 10,
                 expandMode: 'hover',
                 collapsedWidth: 70,
-                expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 200 : 400, // 展开状态的宽度,手机端200,PC端400
+                expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400, // 展开状态的宽度,手机端290,PC端400
             });
             applyPanelSettings();
             settingsPanel.classList.remove('visible');
