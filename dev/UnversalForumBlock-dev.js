@@ -65,8 +65,9 @@
         /* 收起状态的宽度 */
         #forum-filter-panel.click-mode:not(.expanded),
         #forum-filter-panel:not(.click-mode):not(:hover):not(:focus-within) {
-            width: 10px;
-            max-width: 10px;
+            width: 50px;
+            max-width: 200px;
+            min-width: 30px;
         }
 
         /* 确保面板内容在展开状态下可见 */
@@ -5503,7 +5504,7 @@
     let PANEL_SETTINGS = GM_getValue('panelSettings', {
         offset: 2, // 百分比
         expandMode: 'hover', // 'hover' or 'click'
-        collapsedWidth: 10, // 收起状态的宽度
+        collapsedWidth: 70, // 收起状态的宽度
         expandedWidth: 400, // 展开状态的宽度
         showBlockButton: 'hover' // 'hover' or 'always'
     });
@@ -5521,8 +5522,8 @@
         const panel = document.getElementById('forum-filter-panel');
         if (!panel) return;
 
-        // 设置水平位置为最左边
-        panel.style.left = '0';
+        // 设置水平位置
+        panel.style.left = PANEL_SETTINGS.offset + '%';
 
         // 设置展开模式
         if (PANEL_SETTINGS.expandMode === 'click') {
@@ -5611,7 +5612,7 @@
         style.textContent = `
             #forum-filter-panel.click-mode:not(.expanded),
             #forum-filter-panel:not(.click-mode):not(:hover):not(:focus-within) {
-                width: 10px;
+                width: ${PANEL_SETTINGS.collapsedWidth}px;
             }
             #forum-filter-panel:not(.click-mode):hover,
             #forum-filter-panel:not(.click-mode):focus-within,
@@ -5674,13 +5675,13 @@
             </div>
             <div class="setting-group">
                 <label>水平位置</label>
-                <input type="range" id="position-offset" min="0" max="90" value="0">
-                <div class="position-value"></div>
+                <input type="range" id="position-offset" min="0" max="90" value="${PANEL_SETTINGS.offset}">
+                <div class="position-value">${PANEL_SETTINGS.offset}%</div>
             </div>
             <div class="setting-group">
                 <label>收起宽度</label>
-                <input type="range" id="collapsed-width" min="50" max="50" step="10" value="10">
-                <div class="collapsed-width-value">50px</div>
+                <input type="range" id="collapsed-width" min="30" max="200" step="10" value="${PANEL_SETTINGS.collapsedWidth}">
+                <div class="collapsed-width-value">${PANEL_SETTINGS.collapsedWidth}px</div>
             </div>
             <div class="setting-group">
                 <label>展开宽度</label>
@@ -5750,7 +5751,7 @@
                 expandMode: document.getElementById('expand-mode').value,
                 showBlockButton: document.getElementById('show-block-button').value,
                 offset: parseInt(document.getElementById('position-offset').value),
-                collapsedWidth: 10,
+                collapsedWidth: parseInt(document.getElementById('collapsed-width').value),
                 expandedWidth: parseInt(document.getElementById('expanded-width').value)
             };
 
@@ -5785,7 +5786,7 @@
             PANEL_SETTINGS = GM_getValue('panelSettings', {
                 offset: 10,
                 expandMode: 'hover',
-                collapsedWidth: 10,
+                collapsedWidth: 70,
                 expandedWidth: 400
             });
             applyPanelSettings();
