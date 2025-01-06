@@ -65,7 +65,8 @@
         /* 收起状态的宽度 */
         #forum-filter-panel.click-mode:not(.expanded),
         #forum-filter-panel:not(.click-mode):not(:hover):not(:focus-within) {
-            width: 1000px;
+            width: 10px;
+            max-width: 10px;
         }
 
         /* 确保面板内容在展开状态下可见 */
