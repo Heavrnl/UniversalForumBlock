@@ -53,13 +53,13 @@
         #forum-filter-panel:not(.click-mode):hover,
         #forum-filter-panel:not(.click-mode):focus-within {
             transform: translateY(0);
-            width: 400px;
+            width: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400;
         }
 
         /* 点击模式的展开效果 */
         #forum-filter-panel.click-mode.expanded {
             transform: translateY(0) !important;
-            width: 400px !important;
+            width: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400;
         }
 
         /* 收起状态的宽度 */
@@ -5787,7 +5787,7 @@
                 offset: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 0 : 10, // 展开状态的宽度,手机端0,PC端10,
                 expandMode: 'hover',
                 collapsedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 30 : 70, // 展开状态的宽度,手机端30,PC端70
-                expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400, // 展开状态的宽度,手机端290,PC端400
+                expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400 // 展开状态的宽度,手机端290,PC端400
             });
             applyPanelSettings();
             settingsPanel.classList.remove('visible');
