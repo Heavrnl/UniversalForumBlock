@@ -11,7 +11,9 @@
 // @grant        GM_addStyle
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @grant        GM_xmlhttpRequest
 // @grant        GM_registerMenuCommand
+// @connect      *
 // @license       MIT
 // ==/UserScript==
 
@@ -722,6 +724,10 @@
             border-left: 4px solid #E91E63;
         }
 
+        .config-section[data-section="sync"] {
+            border-left: 4px solid #00BCD4;
+        }
+
         /* 为不同配置部分的列表项添加对应的边框颜色 */
         .config-section[data-section="global"] .array-item {
             border-left-color: #2196F3 !important;
@@ -739,10 +745,7 @@
             border-left-color: #9C27B0 !important;
         }
 
-        .config-section[data-section="xpath"] .array-item {
-            border-left-color: #E91E63 !important;
-        }
-
+        
 
 
 
@@ -806,6 +809,11 @@
         .config-section[data-section="xpath"] .config-section-toggle {
             background: #FCE4EC;
             color: #C2185B;
+        }
+
+        .config-section[data-section="sync"] .config-section-toggle {
+            background: #E0F7FA;
+            color: #0097A7;
         }
 
 
@@ -1770,7 +1778,49 @@
             white-space: nowrap !important;
         }
 
-   
+        .config-section[data-section="sync"] input {
+            display: block !important;
+            width: 100% !important;
+            margin-bottom: 8px !important;
+            padding: 6px 12px !important;
+            border: 1px solid #ddd !important;
+            border-radius: 4px !important;
+            height: 32px !important;
+            box-sizing: border-box !important;
+        }
+
+        .config-section[data-section="sync"] .config-section-content button {
+            display: block !important;
+            width: 100% !important;
+            margin-bottom: 8px !important;
+            padding: 6px 12px !important;
+            border: 1px solid #ddd !important;
+            border-radius: 4px !important;
+            background-color: #fff !important;
+            cursor: pointer !important;
+            transition: all 0.2s !important;
+        }
+
+        .config-section[data-section="sync"] button:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        #sync-delete {
+            color: #ff4444 !important;
+            border-color: #ff4444 !important;
+        }
+
+        #sync-delete:hover {
+            background-color: #fff5f5 !important;
+        }
+
+        #sync-status {
+            margin-top: 8px !important;
+            padding: 8px !important;
+            border-radius: 4px !important;
+            background-color: #f5f5f5 !important;
+            min-height: 20px !important;
+        }
 
         
 
@@ -2995,6 +3045,7 @@
             "usernames_SECTION_COLLAPSED": true,
             "url_SECTION_COLLAPSED": true,
             "xpath_SECTION_COLLAPSED": true,
+            "sync_SECTION_COLLAPSED": true,
         },
         "EDITOR_STATES": {
             "keywords": false,
@@ -3008,6 +3059,11 @@
             "main_and_sub_page_user_xpath": false,
             "contentpage_title_xpath": false,
             "contentpage_user_xpath": false
+        },
+        "SYNC_CONFIG": {
+            "server_url": "",
+            "user_key": "",
+            "lastSyncTime": 0
         }
     }
 
@@ -3251,6 +3307,8 @@
         }
     ]
 
+    let wsConnection = null; // WebSocket 连接实例
+
     // 加载用户配置
     function loadUserConfig() {
         try {
@@ -3258,7 +3316,12 @@
             let globalConfig = GM_getValue('globalConfig');
 
             if(globalConfig){
-                GLOBAL_CONFIG = JSON.parse(globalConfig);
+                const parsedConfig = JSON.parse(globalConfig);
+                for (const key in parsedConfig) {
+                    if (key in GLOBAL_CONFIG) {
+                        GLOBAL_CONFIG[key] = parsedConfig[key];
+                    }
+                }
             }else{
                 GM_setValue('globalConfig', JSON.stringify(GLOBAL_CONFIG));
             }
@@ -3381,19 +3444,19 @@
         };
     }
 
-    // 旧的更新配置函数：直接覆盖原有属性。下面的新方法则合并数组属性，其他属性则覆盖
-    // function updateDomainConfig(domain, configData){
-    //     const index = userConfig.findIndex(config => config.domain === domain);
-    //     if (index !== -1) {
-    //         userConfig[index] = configData;
-    //         saveUserConfig(userConfig);
-    //         return {
-    //             success: true,
-    //             message: '配置更新成功',
-    //             config: userConfig[index]
-    //         };
-    //     }
-    // }
+    // 这个更新配置函数：直接覆盖原有属性。下面的新方法则合并数组属性，其他属性则覆盖
+    function updateDomainConfigOverride(domain, configData){
+        const index = userConfig.findIndex(config => config.domain === domain);
+        if (index !== -1) {
+            userConfig[index] = configData;
+            saveUserConfig(userConfig);
+            return {
+                success: true,
+                message: '配置更新成功',
+                config: userConfig[index]
+            };
+        }
+    }
 
     function updateDomainConfig(domain, configData) {
         const index = userConfig.findIndex(config => config.domain === domain);
@@ -5127,7 +5190,7 @@
         //     configToggle.classList.remove('collapsed');
         // }
 
-        ['global', 'keywords', 'usernames', 'url', 'xpath'].forEach(section => {
+        ['global', 'keywords', 'usernames', 'url', 'xpath', 'sync'].forEach(section => {
             const toggle = panel.querySelector(`[data-section="${section}"]`);
             const isCollapsed = GLOBAL_CONFIG.CONFIG_SECTION_COLLAPSED[`${section}_SECTION_COLLAPSED`];
             toggle.classList[isCollapsed ? 'add' : 'remove']('collapsed');
@@ -5199,7 +5262,7 @@
             GM_setValue('LAST_UPDATE_TIME', Date.now());
             console.log('已更新时间戳并重新开始计时');
 
-            saveGlobalConfig();
+            saveConfig();
         });
     }
 
@@ -5430,8 +5493,6 @@
         try {
             // 创建一个包含所有配置的对象
             const exportData = {
-                exportTime: new Date().toISOString(),
-                version: GM_info.script.version,
                 globalConfig: GLOBAL_CONFIG,
                 userConfig: userConfig
             };
@@ -5996,6 +6057,20 @@
                     </div>
                 </div>
 
+                <div class="config-section" data-section="sync">
+                    <button class="config-section-toggle" data-section="sync">
+                        <span id="sync-config-title">云端同步</span>
+                        <span class="config-section-indicator">▼</span>
+                    </button>
+                    <div class="config-section-content">
+                        <input type="text" id="sync-server-url" placeholder="输入服务器地址">
+                        <input type="text" id="sync-user-key" placeholder="输入用户密钥">
+                        <button id="sync-apply">同步</button>
+                        <button id="sync-delete">删除云端配置</button>
+                        <div id="sync-status"></div>
+                    </div>
+                </div>
+
                 <div class="button-group">
                     <button id="export-config">导出配置</button>
                     <button id="import-domain-config" style="display: none;">导入当前域名配置</button>
@@ -6027,7 +6102,7 @@
         panel.querySelector('#delete-domain-config').textContent = setTextfromTemplate('panel_bottom_delete_button');
         panel.querySelector('#save-domain-config').textContent = setTextfromTemplate('panel_bottom_save_button');
 
-        ['global', 'keywords', 'usernames', 'url', 'xpath'].forEach(section => {
+        ['global', 'keywords', 'usernames', 'url', 'xpath', 'sync'].forEach(section => {
             const toggle = panel.querySelector(`[data-section="${section}"]`);
             const isCollapsed = GLOBAL_CONFIG.CONFIG_SECTION_COLLAPSED[`${section}_SECTION_COLLAPSED`];
             toggle.classList[isCollapsed ? 'add' : 'remove']('collapsed');
@@ -6037,7 +6112,8 @@
         panel.querySelector('#export-config').addEventListener('click', exportUserConfig);
         panel.querySelector('#import-config').addEventListener('click', importUserConfigFromFile);
         panel.querySelector('#import-domain-config').addEventListener('click', importCurrentDomainConfigFromFile);
-
+        panel.querySelector('#sync-apply').addEventListener('click', handleSyncInput);
+        panel.querySelector('#sync-delete').addEventListener('click', deleteCloudConfig);
         // // 添加语言选择的事件监听器
         // const languageSelect = panel.querySelector('#language-select');
         // languageSelect.value = GLOBAL_CONFIG.LANGUAGE || 'zh-CN';
@@ -6045,6 +6121,8 @@
         //     const newLanguage = e.target.value;
         //     setLanguage(newLanguage);
         // });
+        panel.querySelector('#sync-server-url').value = GLOBAL_CONFIG.SYNC_CONFIG.server_url || '';
+        panel.querySelector('#sync-user-key').value = GLOBAL_CONFIG.SYNC_CONFIG.user_key || '';
 
         // 为所有配置部分添加折叠功能
         panel.querySelectorAll('.config-section-toggle').forEach(toggle => {
@@ -6163,12 +6241,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             createSettingsPanel();
             createControlPanel();
-            createFloatingPanel();
+            initCloudSync();
+            // createFloatingPanel();
         });
     } else {
         createSettingsPanel();
         createControlPanel();
-        createFloatingPanel();
+        initCloudSync();
+        // createFloatingPanel();
     }
 
     function getSplitUrl(){
@@ -7308,6 +7388,372 @@ function showImportResult(addedCount, duplicateCount) {
         document.querySelector('#settings-save').textContent = setTextfromTemplate('settings_save');
     }
 
+    // 创建一个 fetch 的包装函数
+    function gmFetch(url, options = {}) {
+        return new Promise((resolve, reject) => {
+            GM_xmlhttpRequest({
+                url,
+                method: options.method || 'GET',
+                headers: options.headers || {},
+                data: options.body,
+                responseType: 'json',
+                onload: function(response) {
+                    resolve({
+                        ok: response.status >= 200 && response.status < 300,
+                        status: response.status,
+                        statusText: response.statusText,
+                        json: () => Promise.resolve(response.response),
+                        text: () => Promise.resolve(response.responseText)
+                    });
+                },
+                onerror: function(error) {
+                    reject(new Error('Network error'));
+                }
+            });
+        });
+    }
+
+    function checkSyncInput(){
+        const sync_server_url = document.getElementById('sync-server-url').value;
+        const sync_user_key = document.getElementById('sync-user-key').value;
+        if(!sync_server_url || !sync_user_key){
+            updateSyncStatus('请先设置服务器地址和用户密钥', 'error');
+            return false;
+        }
+        GLOBAL_CONFIG.SYNC_CONFIG.server_url = sync_server_url;
+        GLOBAL_CONFIG.SYNC_CONFIG.user_key = sync_user_key;
+        saveGlobalConfig();
+        return true;
+    }
+
+
+// 从服务器获取配置
+async function getConfigFromServer() {
+    const response = await gmFetch(`${GLOBAL_CONFIG.SYNC_CONFIG.server_url}/config`, {
+        method: 'GET',
+        headers: {
+            'X-API-Key': GLOBAL_CONFIG.SYNC_CONFIG.user_key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(await response.text());
+    }
+
+    return await response.json();
+}
+
+// 同步配置到服务器
+async function handleSyncInput() {
+  let sync_server_url = document.querySelector('#sync-server-url').value
+  if(sync_server_url.startsWith('http')){
+    sync_server_url = sync_server_url.replace(/^https?/, 'wss');
+  }else{
+    sync_server_url = 'wss://' + sync_server_url;
+  }
+  const sync_user_key = document.querySelector('#sync-user-key').value;
+
+  if(!sync_server_url || !sync_user_key){
+    updateSyncStatus('请先设置服务器地址和用户密钥', 'error');
+    return false;
+  }
+  console.log('sync_server_url:',sync_server_url);
+  console.log('sync_user_key:',sync_user_key);
+  const response = await testConnection(sync_server_url , sync_user_key);
+  if (response.success) {
+    GLOBAL_CONFIG.SYNC_CONFIG.server_url = sync_server_url;
+    GLOBAL_CONFIG.SYNC_CONFIG.user_key = sync_user_key;
+    updateSyncStatus('连接成功', 'success');
+    initWebSocket();
+    return true;
+  } else {
+    updateSyncStatus('连接失败: ' + response.message, 'error');
+    return false;
+  }
+}
+
+
+// // 创建一个防抖函数来处理配置更新
+// const debouncedPushConfigUpdate = debounce(() => {
+//     pushConfigUpdate();
+// }, 1000);
+
+// // 为userConfig创建一个Proxy
+// userConfig = new Proxy(userConfig || [], {
+//     set(target, property, value) {
+//         target[property] = value;
+//         debouncedPushConfigUpdate();
+//         return true;
+//     }
+// });
+
+// // 为GLOBAL_CONFIG创建一个Proxy
+// GLOBAL_CONFIG = new Proxy(GLOBAL_CONFIG || {}, {
+//     set(target, property, value) {
+//         target[property] = value;
+//         if (property !== 'SYNC_CONFIG') { // 避免同步配置变化触发更新
+//             debouncedPushConfigUpdate();
+//         }
+//         return true;
+//     }
+// });
+
+
+
+        // 删除云端配置
+        async function deleteCloudConfig() {
+            try {
+                if (!confirm('确定要删除云端配置吗？此操作不可恢复。')) {
+                    return;
+                }
+                const response = await gmFetch(`${GLOBAL_CONFIG.SYNC_CONFIG.server_url}/config`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-API-Key': GLOBAL_CONFIG.SYNC_CONFIG.user_key
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(await response.text());
+                }
+
+                // // 重置同步配置
+                // GLOBAL_CONFIG.SYNC_CONFIG = {
+                //     lastSyncTime: 0,
+                //     version: 0
+                // };
+                saveGlobalConfig();
+                updateSyncStatus('删除云端配置成功', 'success');
+            } catch (error) {
+                throw new Error('删除云端配置失败: ' + error.message);
+            }
+        }
+
+        // 更新同步状态显示
+        function updateSyncStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('sync-status');
+            statusDiv.textContent = message;
+            statusDiv.className = `sync-status ${type}`;
+            
+            // 根据不同状态设置不同颜色
+            switch(type) {
+                case 'success':
+                    statusDiv.style.color = '#4caf50'; // 绿色
+                    break;
+                case 'error':
+                    statusDiv.style.color = '#f44336'; // 红色
+                    break;
+                case 'warning':
+                    statusDiv.style.color = '#ff9800'; // 橙色
+                    break;
+                case 'info':
+                default:
+                    statusDiv.style.color = '#2196f3'; // 蓝色
+                    break;
+            }
+        }
+        
+
+        
+
+
+
+        // 初始化 WebSocket 连接
+        function initWebSocket() {
+            closeWebSocket();
+
+
+            const wsUrl = GLOBAL_CONFIG.SYNC_CONFIG.server_url.startsWith('wss') ?
+                GLOBAL_CONFIG.SYNC_CONFIG.server_url :
+                GLOBAL_CONFIG.SYNC_CONFIG.server_url.startsWith('http') ?
+                    GLOBAL_CONFIG.SYNC_CONFIG.server_url.replace(/^https?/, 'wss') :
+                    'wss://' + GLOBAL_CONFIG.SYNC_CONFIG.server_url;
+            console.log('wsUrl:',wsUrl);
+            wsConnection = new WebSocket(`${wsUrl}/ws/config/${GLOBAL_CONFIG.SYNC_CONFIG.user_key}`);
+             // 检查是否为第一次同步
+             const isFirstSync = GM_getValue('isFirstSync_' + GLOBAL_CONFIG.SYNC_CONFIG.user_key+'_'+GLOBAL_CONFIG.SYNC_CONFIG.server_url, true);
+             
+            wsConnection.onopen = () => {   
+                console.log('WebSocket 连接已建立');
+                //第一次同步
+                if(isFirstSync){
+                    // 标记为非第一次同步
+                 GM_setValue('isFirstSync_' + GLOBAL_CONFIG.SYNC_CONFIG.user_key+'_'+GLOBAL_CONFIG.SYNC_CONFIG.server_url, false);
+                    // 发送初始化消息
+                    GLOBAL_CONFIG.SYNC_CONFIG.lastSyncTime = Date.now();
+                    wsConnection.send(JSON.stringify({
+                        type: 'firstSync',
+                        globalConfig: GLOBAL_CONFIG,
+                        userConfig: userConfig
+                    }));
+                }else{
+                    // 非第一次同步，直接检查配置是否需要更新
+                    wsConnection.send(JSON.stringify({
+                        type: 'update',
+                        globalConfig: GLOBAL_CONFIG,
+                        userConfig: userConfig
+                    }));
+                }
+
+                updateSyncStatus('已连接到云端', 'success');
+                
+                
+                
+            };
+
+
+
+            wsConnection.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                console.log('收到云端配置更新:', data);
+
+                switch(data.type) {
+                    case 'firstSync':
+                        if(data.message === 'firstSync_success'){
+                            updateSyncStatus('本地配置已保存至云端！', 'success');
+                        }
+                        break;
+                    case 'update':
+                        if(data){
+                            saveConfig(data,false,true);
+                            GLOBAL_CONFIG.SYNC_CONFIG.lastSyncTime = Date.now();
+                            if(data.message === 'config_updated'){
+                                updateSyncStatus('已同步云端配置', 'success');
+                            }
+                        }
+                        break;
+                    case 'configConflict':
+                        // 显示确认对话框让用户选择使用哪个配置
+                        const useCloud = confirm(
+                            `检测到配置冲突!\n\n` +
+                            `云端配置时间: ${data.cloudTime}\n` + 
+                            `本地配置时间: ${data.localTime}\n\n` +
+                            `${data.newerConfig === 'cloud' ? '云端配置较新' : '本地配置较新'}\n\n` +
+                            `是否使用云端配置? (点击确定使用云端配置，点击取消使用本地配置)`
+                        );
+                        
+                        // 发送用户选择
+                        wsConnection.send(JSON.stringify({
+                            type: 'resolveConflict',
+                            choice: useCloud ? 'useCloud' : 'useLocal'
+                        }));
+                        break;
+                }
+                
+         
+            
+            };
+
+            wsConnection.onclose = () => {
+                console.log('WebSocket 连接已关闭');
+                updateSyncStatus('连接已断开，尝试重新连接...', 'warning');
+                
+                // 尝试重新连接
+                // setTimeout(() => {
+                //     console.log('尝试重新连接...');
+                //     initWebSocket();
+                // }, 5000); // 5秒后重试
+            };
+
+            wsConnection.onerror = (error) => {
+                console.error('WebSocket 错误:', error);
+                updateSyncStatus('连接错误', 'error');
+            };
+        }
+
+        // 关闭 WebSocket 连接
+        function closeWebSocket() {
+            if (wsConnection) {
+                wsConnection.close();
+                wsConnection = null;
+            }
+        }
+
+        async function testConnection(serverUrl, userKey) {
+            console.log('testConnection');
+            try {
+                // 创建一个临时的WebSocket连接来测试
+                const wsUrl = serverUrl + '/ws/config/' + userKey;
+                const ws = new WebSocket(wsUrl);
+                
+                return new Promise((resolve) => {
+                    ws.onopen = () => {
+                        ws.close();
+                        resolve({ success: true });
+                    };
+                    
+                    ws.onerror = (error) => {
+                        ws.close();
+                        resolve({ 
+                            success: false, 
+                            message: 'WebSocket连接失败'
+                        });
+                    };
+                });
+            } catch (error) {
+                return { 
+                    success: false, 
+                    message: error.message 
+                };
+            }
+        }
+
+
+        // 云同步相关函数
+    async function initCloudSync() {
+        if(GLOBAL_CONFIG.SYNC_CONFIG.server_url && GLOBAL_CONFIG.SYNC_CONFIG.user_key){
+          
+        
+        console.log('initCloudSync');
+        try {
+            const response = await testConnection(GLOBAL_CONFIG.SYNC_CONFIG.server_url , GLOBAL_CONFIG.SYNC_CONFIG.user_key);
+            if (response.success) {
+
+
+                // 初始化 WebSocket 连接
+                initWebSocket();
+            } else {
+                updateSyncStatus('连接失败: ' + response.message, 'error');
+            }
+        } catch (error) {
+            updateSyncStatus('连接错误: ' + error.message, 'error');
+        }
+
+
+         // 如果已有配置，自动连接
+        if (GLOBAL_CONFIG.SYNC_CONFIG.server_url && GLOBAL_CONFIG.SYNC_CONFIG.user_key) {
+            initWebSocket();
+        }
+    }
+    }
+
+    
+    // 推送配置更新到服务器
+    async function pushConfigUpdate() {
+        try {
+            if (wsConnection && wsConnection.readyState === WebSocket.OPEN) {
+                GLOBAL_CONFIG.SYNC_CONFIG.lastSyncTime = Date.now();
+                const configData = {
+                    type: 'update',
+                    globalConfig: GLOBAL_CONFIG,
+                    userConfig: userConfig
+                    };
+                
+                    await wsConnection.send(JSON.stringify(configData));
+                } else {
+                    console.warn('WebSocket未连接');
+                    initWebSocket();
+                }
+            } catch (error) {
+                console.error('同步失败:', error);
+                updateSyncStatus('同步失败: ' + error.message, 'error');
+            }
+    }
+
+
+
+    
+
     // 修改downloadAndApplyConfig函数
     function downloadAndApplyConfig(){
         const urls = GLOBAL_CONFIG.GLOBAL_CONFIG_URL;
@@ -7360,12 +7806,13 @@ function showImportResult(addedCount, duplicateCount) {
     }
 
     // 保存配置
-    function saveConfig(args_config = null,isglobalurl = false) {
+    function saveConfig(args_config = null,isglobalurl = false,isPushConfigUpdate = false) {
         const panel = document.getElementById('forum-filter-panel');
         if (!panel) return;
 
 
         if (args_config) {
+
             if(args_config.globalConfig){
                 // 按需导入全局配置的各个字段
                 for (const key in args_config.globalConfig) {
@@ -7382,20 +7829,28 @@ function showImportResult(addedCount, duplicateCount) {
 
                 const existingConfig = getDomainConfig(config.domain);
                 if (existingConfig) {
-                    // 如果存在，更新配置
-                    updateDomainConfig(config.domain, config);
+                    if(isPushConfigUpdate){
+                        updateDomainConfigOverride(config.domain, config);
+                        
+                    }else{
+                        // 如果存在，更新配置
+                        updateDomainConfig(config.domain, config);
+                    }
                 } else {
                     // 如果不存在，添加新配置
                     addDomainConfig(config);
                     }
                 });
             }
-
+            
+            if(!isPushConfigUpdate){
+                pushConfigUpdate()
+            }
             saveUserConfig(userConfig);
             debouncedHandleElements();
             updatePanelContent();
 
-            return config;
+            return;
         }
 
 
@@ -7441,6 +7896,12 @@ function showImportResult(addedCount, duplicateCount) {
         } else {
             userConfig.push(config);
         }
+
+        
+        
+
+
+        pushConfigUpdate()
         saveUserConfig(userConfig);
         debouncedHandleElements();
         updatePanelContent();
