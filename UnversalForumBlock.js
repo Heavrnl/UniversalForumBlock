@@ -2019,7 +2019,7 @@
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABOUlEQVR4AYTRAaaEUBgF4MmMCqVSiiAE2kO0sUCbCBiBdtAOWsAADFGqUCQlYdB5lSlv3qvm53Bzu191uuyMPsWd8pzyemdeu8vel7mbpgmapjGtj3LfPUkQxGO+wTAMZFmG2+12hjz+PXkKoigCRVHQdX0HOX4T3bIsaJoGRVEQx/GGpGn6DVk6cQVBQFVVUFUVsiwjSRJcr1c4joOiKECS5BHgXt4Ng2XZDRFFEXmeY50gCI6A+ezym7AiZVnCtm38Hs/zjoDXB7AibdtiHMcNmFGGYQ6B598NjuMQhiF830dd1wvWNA3mrvY+wT1pGTzPo+/7Bem6brkmCOKjRH0KziJJEoZh2JCfIXlHGSUh4cAgG8GGfP78GRwmxcXFWJP0BUzNmGFTVlYGSlwYSRndJURnJoqzMwAArDfg4/66PAAAAABJRU5ErkJggg==" height="14" width="14" style="vertical-align: text-bottom;">
                     </a>
                     <a class="external-link" style="color: #333 !important; text-decoration: none !important; display: flex; align-items: center;">
-                            <span style="margin-left: 3px; font-size: 12px;">v1.0.0</span>
+                            <span style="margin-left: 3px; font-size: 12px;">v1.1.0</span>
                     </a>
                 </div>
                 <div class="domain-info">
