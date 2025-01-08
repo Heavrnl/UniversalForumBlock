@@ -1883,6 +1883,32 @@
             'xpath_config_content_page_keywords_title': '内容页关键词XPath',
             'xpath_config_content_page_usernames_title': '内容页用户XPath',
 
+            'sync_config_title': '云端同步',
+            'sync_config_server_url': '服务器地址',
+            'sync_config_user_key': '用户密钥',
+            'sync_config_apply': '同步',
+            'sync_config_delete': '删除云端配置',
+            'sync_panel_status_connect_failed': '连接失败: ',
+            'sync_panel_status_connect_error': '连接错误: ',
+            'sync_panel_status_connect_success': '连接成功',
+            'sync_panel_status_sync_failed': '同步失败: ',
+            'sync_panel_status_input_error': '请先设置服务器地址和用户密钥',
+            'sync_panel_status_delete_success': '删除云端配置成功',
+            'sync_panel_status_delete_failed': '删除云端配置失败: ',
+            'sync_panel_status_delete_confirm': '确定要删除云端配置吗？此操作不可恢复。',
+            'sync_panel_status_connect_server_success': '已连接到云端',
+            'sync_panel_status_client_to_server_success': '本地配置已保存至云端！',
+            'sync_panel_status_config_updated': '已同步云端配置',
+            'sync_panel_status_config_conflict_1': '检测到配置冲突!',
+            'sync_panel_status_config_conflict_2': '云端配置时间: ',
+            'sync_panel_status_config_conflict_3': '本地配置时间: ',
+            'sync_panel_status_config_conflict_4': '是否使用云端配置? (点击确定使用云端配置，点击取消使用本地配置)',
+            'sync_panel_status_config_conflict_cloud_newer': '云端配置较新',
+            'sync_panel_status_config_conflict_local_newer': '本地配置较新',
+            'sync_panel_status_disconnect': '连接已断开，尝试重新连接...',
+
+
+
 
             'array_editor_add_item_input_placeholder': '请输入',
             'array_editor_add_item_input_placeholder_regex': '请输入正则表达式',
@@ -1973,6 +1999,31 @@
             'xpath_config_content_page_keywords_title': 'Content Page Keywords XPath',
             'xpath_config_content_page_usernames_title': 'Content Page User XPath',
 
+
+            'sync_config_title': 'Cloud Sync',
+            'sync_config_server_url': 'Server URL',
+            'sync_config_user_key': 'User Key',
+            'sync_config_apply': 'Sync',
+            'sync_config_delete': 'Delete Cloud Config',
+            'sync_panel_status_connect_failed': 'Connection Failed: ',
+            'sync_panel_status_connect_error': 'Connection Error: ',
+            'sync_panel_status_connect_success': 'Connected Successfully',
+            'sync_panel_status_sync_failed': 'Sync Failed: ',
+            'sync_panel_status_input_error': 'Please set server URL and user key first',
+            'sync_panel_status_delete_success': 'Cloud config deleted successfully',
+            'sync_panel_status_delete_failed': 'Failed to delete cloud config: ',
+            'sync_panel_status_delete_confirm': 'Are you sure you want to delete cloud config? This action cannot be undone.',
+            'sync_panel_status_connect_server_success': 'Connected to cloud',
+            'sync_panel_status_client_to_server_success': 'Local config saved to cloud!',
+            'sync_panel_status_config_updated': 'Cloud config synced',
+            'sync_panel_status_config_conflict_1': 'Config conflict detected!',
+            'sync_panel_status_config_conflict_2': 'Cloud config time: ',
+            'sync_panel_status_config_conflict_3': 'Local config time: ',
+            'sync_panel_status_config_conflict_4': 'Use cloud config? (Click OK to use cloud config, Cancel to use local config)',
+            'sync_panel_status_config_conflict_cloud_newer': 'Cloud config is newer',
+            'sync_panel_status_config_conflict_local_newer': 'Local config is newer',
+            'sync_panel_status_disconnect': 'Disconnected, attempting to reconnect...',
+
             'array_editor_add_item_input_placeholder': 'Please enter',
             'array_editor_add_item_input_placeholder_regex': 'Please enter regex',
             'array_editor_add_item': 'Add',
@@ -2057,6 +2108,31 @@
             'xpath_config_main_and_sub_page_usernames_title': 'メイン/サブページユーザーXPath',
             'xpath_config_content_page_keywords_title': 'コンテンツページキーワードXPath',
             'xpath_config_content_page_usernames_title': 'コンテンツページユーザーXPath',
+
+            'sync_config_title': 'クラウド同期',
+            'sync_config_server_url': 'サーバーアドレス',
+            'sync_config_user_key': 'ユーザーキー',
+            'sync_config_apply': '同期',
+            'sync_config_delete': 'クラウド設定を削除',
+            'sync_panel_status_connect_failed': '接続失敗: ',
+            'sync_panel_status_connect_error': '接続エラー: ',
+            'sync_panel_status_connect_success': '接続成功',
+            'sync_panel_status_sync_failed': '同期失敗: ',
+            'sync_panel_status_input_error': 'サーバーアドレスとユーザーキーを設定してください',
+            'sync_panel_status_delete_success': 'クラウド設定の削除に成功しました',
+            'sync_panel_status_delete_failed': 'クラウド設定の削除に失敗しました: ',
+            'sync_panel_status_delete_confirm': 'クラウド設定を削除してもよろしいですか？この操作は元に戻せません。',
+            'sync_panel_status_connect_server_success': 'クラウドに接続しました',
+            'sync_panel_status_client_to_server_success': 'ローカル設定をクラウドに保存しました！',
+            'sync_panel_status_config_updated': 'クラウド設定を同期しました',
+            'sync_panel_status_config_conflict_1': '設定の競合を検出しました！',
+            'sync_panel_status_config_conflict_2': 'クラウド設定の時刻: ',
+            'sync_panel_status_config_conflict_3': 'ローカル設定の時刻: ',
+            'sync_panel_status_config_conflict_4': 'クラウド設定を使用しますか？（OKでクラウド設定を使用、キャンセルでローカル設定を使用）',
+            'sync_panel_status_config_conflict_cloud_newer': 'クラウド設定の方が新しいです',
+            'sync_panel_status_config_conflict_local_newer': 'ローカル設定の方が新しいです',
+            'sync_panel_status_disconnect': '接続が切断されました。再接続を試みています...',
+
 
             'array_editor_add_item_input_placeholder': '入力してください',
             'array_editor_add_item_input_placeholder_regex': '正規表現を入力',
@@ -2143,6 +2219,30 @@
             'xpath_config_content_page_keywords_title': '콘텐츠 페이지 키워드 XPath',
             'xpath_config_content_page_usernames_title': '콘텐츠 페이지 사용자 XPath',
 
+            'sync_config_title': '클라우드 동기화',
+            'sync_config_server_url': '서버 주소',
+            'sync_config_user_key': '사용자 키',
+            'sync_config_apply': '동기화',
+            'sync_config_delete': '클라우드 설정 삭제',
+            'sync_panel_status_connect_failed': '연결 실패: ',
+            'sync_panel_status_connect_error': '연결 오류: ',
+            'sync_panel_status_connect_success': '연결 성공',
+            'sync_panel_status_sync_failed': '동기화 실패: ',
+            'sync_panel_status_input_error': '서버 주소와 사용자 키를 먼저 설정하세요',
+            'sync_panel_status_delete_success': '클라우드 설정 삭제 성공',
+            'sync_panel_status_delete_failed': '클라우드 설정 삭제 실패: ',
+            'sync_panel_status_delete_confirm': '클라우드 설정을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.',
+            'sync_panel_status_connect_server_success': '클라우드에 연결됨',
+            'sync_panel_status_client_to_server_success': '로컬 설정이 클라우드에 저장되었습니다!',
+            'sync_panel_status_config_updated': '클라우드 설정이 동기화되었습니다',
+            'sync_panel_status_config_conflict_1': '설정 충돌이 감지되었습니다!',
+            'sync_panel_status_config_conflict_2': '클라우드 설정 시간: ',
+            'sync_panel_status_config_conflict_3': '로컬 설정 시간: ',
+            'sync_panel_status_config_conflict_4': '클라우드 설정을 사용하시겠습니까? (확인을 클릭하여 클라우드 설정 사용, 취소를 클릭하여 로컬 설정 사용)',
+            'sync_panel_status_config_conflict_cloud_newer': '클라우드 설정이 더 최신입니다',
+            'sync_panel_status_config_conflict_local_newer': '로컬 설정이 더 최신입니다',
+            'sync_panel_status_disconnect': '연결이 끊어졌습니다. 다시 연결을 시도합니다...',
+
             'array_editor_add_item_input_placeholder': '입력하세요',
             'array_editor_add_item_input_placeholder_regex': '정규식 입력',
             'array_editor_add_item': '추가',
@@ -2227,6 +2327,30 @@
             'xpath_config_main_and_sub_page_usernames_title': 'XPath пользователей главной/подстраниц',
             'xpath_config_content_page_keywords_title': 'XPath ключевых слов страницы контента',
             'xpath_config_content_page_usernames_title': 'XPath пользователей страницы контента',
+
+            'sync_config_title': 'Облачная синхронизация',
+            'sync_config_server_url': 'Адрес сервера',
+            'sync_config_user_key': 'Ключ пользователя',
+            'sync_config_apply': 'Синхронизировать',
+            'sync_config_delete': 'Удалить облачную конфигурацию',
+            'sync_panel_status_connect_failed': 'Ошибка подключения: ',
+            'sync_panel_status_connect_error': 'Ошибка соединения: ',
+            'sync_panel_status_connect_success': 'Подключение успешно',
+            'sync_panel_status_sync_failed': 'Ошибка синхронизации: ',
+            'sync_panel_status_input_error': 'Пожалуйста, сначала установите адрес сервера и ключ пользователя',
+            'sync_panel_status_delete_success': 'Облачная конфигурация успешно удалена',
+            'sync_panel_status_delete_failed': 'Не удалось удалить облачную конфигурацию: ',
+            'sync_panel_status_delete_confirm': 'Вы уверены, что хотите удалить облачную конфигурацию? Это действие нельзя отменить.',
+            'sync_panel_status_connect_server_success': 'Подключено к облаку',
+            'sync_panel_status_client_to_server_success': 'Локальная конфигурация сохранена в облаке!',
+            'sync_panel_status_config_updated': 'Облачная конфигурация синхронизирована',
+            'sync_panel_status_config_conflict_1': 'Обнаружен конфликт конфигурации!',
+            'sync_panel_status_config_conflict_2': 'Время облачной конфигурации: ',
+            'sync_panel_status_config_conflict_3': 'Время локальной конфигурации: ',
+            'sync_panel_status_config_conflict_4': 'Использовать облачную конфигурацию? (Нажмите OK для использования облачной конфигурации, Отмена для использования локальной)',
+            'sync_panel_status_config_conflict_cloud_newer': 'Облачная конфигурация новее',
+            'sync_panel_status_config_conflict_local_newer': 'Локальная конфигурация новее',
+            'sync_panel_status_disconnect': 'Соединение потеряно, попытка переподключения...',
 
             'array_editor_add_item_input_placeholder': 'Введите значение',
             'array_editor_add_item_input_placeholder_regex': 'Введите регулярное выражение',
@@ -2313,6 +2437,30 @@
             'xpath_config_content_page_keywords_title': 'XPath mots-clés page de contenu',
             'xpath_config_content_page_usernames_title': 'XPath utilisateur page de contenu',
 
+            'sync_config_title': 'Synchronisation cloud',
+            'sync_config_server_url': 'Adresse du serveur',
+            'sync_config_user_key': 'Clé utilisateur',
+            'sync_config_apply': 'Synchroniser',
+            'sync_config_delete': 'Supprimer la configuration cloud',
+            'sync_panel_status_connect_failed': 'Échec de la connexion : ',
+            'sync_panel_status_connect_error': 'Erreur de connexion : ',
+            'sync_panel_status_connect_success': 'Connexion réussie',
+            'sync_panel_status_sync_failed': 'Échec de la synchronisation : ',
+            'sync_panel_status_input_error': "Veuillez d'abord configurer l'adresse du serveur et la clé utilisateur",
+            'sync_panel_status_delete_success': 'Configuration cloud supprimée avec succès',
+            'sync_panel_status_delete_failed': 'Échec de la suppression de la configuration cloud : ',
+            'sync_panel_status_delete_confirm': 'Êtes-vous sûr de vouloir supprimer la configuration cloud ? Cette action est irréversible.',
+            'sync_panel_status_connect_server_success': 'Connecté au cloud',
+            'sync_panel_status_client_to_server_success': 'Configuration locale sauvegardée dans le cloud !',
+            'sync_panel_status_config_updated': 'Configuration cloud synchronisée',
+            'sync_panel_status_config_conflict_1': 'Conflit de configuration détecté !',
+            'sync_panel_status_config_conflict_2': 'Date de la configuration cloud : ',
+            'sync_panel_status_config_conflict_3': 'Date de la configuration locale : ',
+            'sync_panel_status_config_conflict_4': 'Utiliser la configuration cloud ? (Cliquez OK pour utiliser la configuration cloud, Annuler pour utiliser la configuration locale)',
+            'sync_panel_status_config_conflict_cloud_newer': 'La configuration cloud est plus récente',
+            'sync_panel_status_config_conflict_local_newer': 'La configuration locale est plus récente',
+            'sync_panel_status_disconnect': 'Connexion perdue, tentative de reconnexion...',
+
             'array_editor_add_item_input_placeholder': 'Entrez une valeur',
             'array_editor_add_item_input_placeholder_regex': 'Entrez une expression régulière',
             'array_editor_add_item': 'Ajouter',
@@ -2397,6 +2545,30 @@
             'xpath_config_main_and_sub_page_usernames_title': 'Haupt/Unterseiten-Benutzer-XPath',
             'xpath_config_content_page_keywords_title': 'Inhaltsseiten-Schlüsselwörter-XPath',
             'xpath_config_content_page_usernames_title': 'Inhaltsseiten-Benutzer-XPath',
+
+            'sync_config_title': 'Cloud-Synchronisation',
+            'sync_config_server_url': 'Server-Adresse',
+            'sync_config_user_key': 'Benutzerschlüssel',
+            'sync_config_apply': 'Synchronisieren',
+            'sync_config_delete': 'Cloud-Konfiguration löschen',
+            'sync_panel_status_connect_failed': 'Verbindung fehlgeschlagen: ',
+            'sync_panel_status_connect_error': 'Verbindungsfehler: ',
+            'sync_panel_status_connect_success': 'Verbindung erfolgreich',
+            'sync_panel_status_sync_failed': 'Synchronisation fehlgeschlagen: ',
+            'sync_panel_status_input_error': 'Bitte geben Sie zuerst Server-Adresse und Benutzerschlüssel ein',
+            'sync_panel_status_delete_success': 'Cloud-Konfiguration erfolgreich gelöscht',
+            'sync_panel_status_delete_failed': 'Löschen der Cloud-Konfiguration fehlgeschlagen: ',
+            'sync_panel_status_delete_confirm': 'Sind Sie sicher, dass Sie die Cloud-Konfiguration löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.',
+            'sync_panel_status_connect_server_success': 'Mit Cloud verbunden',
+            'sync_panel_status_client_to_server_success': 'Lokale Konfiguration wurde in der Cloud gespeichert!',
+            'sync_panel_status_config_updated': 'Cloud-Konfiguration synchronisiert',
+            'sync_panel_status_config_conflict_1': 'Konfigurationskonflikt erkannt!',
+            'sync_panel_status_config_conflict_2': 'Cloud-Konfiguration Zeit: ',
+            'sync_panel_status_config_conflict_3': 'Lokale Konfiguration Zeit: ',
+            'sync_panel_status_config_conflict_4': 'Cloud-Konfiguration verwenden? (OK für Cloud-Konfiguration, Abbrechen für lokale Konfiguration)',
+            'sync_panel_status_config_conflict_cloud_newer': 'Cloud-Konfiguration ist neuer',
+            'sync_panel_status_config_conflict_local_newer': 'Lokale Konfiguration ist neuer',
+            'sync_panel_status_disconnect': 'Verbindung getrennt, versuche neu zu verbinden...',
 
             'array_editor_add_item_input_placeholder': 'Wert eingeben',
             'array_editor_add_item_input_placeholder_regex': 'Regulären Ausdruck eingeben',
@@ -2483,6 +2655,30 @@
             'xpath_config_content_page_keywords_title': 'XPath parole chiave pagina contenuto',
             'xpath_config_content_page_usernames_title': 'XPath utente pagina contenuto',
 
+            'sync_config_title': 'Sincronizzazione cloud',
+            'sync_config_server_url': 'Indirizzo server',
+            'sync_config_user_key': 'Chiave utente',
+            'sync_config_apply': 'Sincronizza',
+            'sync_config_delete': 'Elimina configurazione cloud',
+            'sync_panel_status_connect_failed': 'Connessione fallita: ',
+            'sync_panel_status_connect_error': 'Errore di connessione: ',
+            'sync_panel_status_connect_success': 'Connessione riuscita',
+            'sync_panel_status_sync_failed': 'Sincronizzazione fallita: ',
+            'sync_panel_status_input_error': 'Inserisci prima indirizzo server e chiave utente',
+            'sync_panel_status_delete_success': 'Configurazione cloud eliminata con successo',
+            'sync_panel_status_delete_failed': 'Eliminazione configurazione cloud fallita: ',
+            'sync_panel_status_delete_confirm': 'Sei sicuro di voler eliminare la configurazione cloud? Questa azione non può essere annullata.',
+            'sync_panel_status_connect_server_success': 'Connesso al cloud',
+            'sync_panel_status_client_to_server_success': 'Configurazione locale salvata nel cloud!',
+            'sync_panel_status_config_updated': 'Configurazione cloud sincronizzata',
+            'sync_panel_status_config_conflict_1': 'Rilevato conflitto di configurazione!',
+            'sync_panel_status_config_conflict_2': 'Data configurazione cloud: ',
+            'sync_panel_status_config_conflict_3': 'Data configurazione locale: ',
+            'sync_panel_status_config_conflict_4': 'Usare la configurazione cloud? (OK per usare cloud, Annulla per usare locale)',
+            'sync_panel_status_config_conflict_cloud_newer': 'La configurazione cloud è più recente',
+            'sync_panel_status_config_conflict_local_newer': 'La configurazione locale è più recente',
+            'sync_panel_status_disconnect': 'Connessione persa, tentativo di riconnessione...',
+
             'array_editor_add_item_input_placeholder': 'Inserisci valore',
             'array_editor_add_item_input_placeholder_regex': 'Inserisci espressione regolare',
             'array_editor_add_item': 'Aggiungi',
@@ -2567,6 +2763,30 @@
             'xpath_config_main_and_sub_page_usernames_title': 'XPath ผู้ใช้หน้าหลัก/ย่อย',
             'xpath_config_content_page_keywords_title': 'XPath คำสำคัญหน้าเนื้อหา',
             'xpath_config_content_page_usernames_title': 'XPath ผู้ใช้หน้าเนื้อหา',
+
+            'sync_config_title': 'การซิงค์คลาวด์',
+            'sync_config_server_url': 'ที่อยู่เซิร์ฟเวอร์',
+            'sync_config_user_key': 'คีย์ผู้ใช้',
+            'sync_config_apply': 'ซิงค์',
+            'sync_config_delete': 'ลบการตั้งค่าคลาวด์',
+            'sync_panel_status_connect_failed': 'การเชื่อมต่อล้มเหลว: ',
+            'sync_panel_status_connect_error': 'ข้อผิดพลาดในการเชื่อมต่อ: ',
+            'sync_panel_status_connect_success': 'เชื่อมต่อสำเร็จ',
+            'sync_panel_status_sync_failed': 'การซิงค์ล้มเหลว: ',
+            'sync_panel_status_input_error': 'กรุณาตั้งค่าที่อยู่เซิร์ฟเวอร์และคีย์ผู้ใช้ก่อน',
+            'sync_panel_status_delete_success': 'ลบการตั้งค่าคลาวด์สำเร็จ',
+            'sync_panel_status_delete_failed': 'ลบการตั้งค่าคลาวด์ล้มเหลว: ',
+            'sync_panel_status_delete_confirm': 'คุณแน่ใจหรือไม่ที่จะลบการตั้งค่าคลาวด์? การดำเนินการนี้ไม่สามารถย้อนกลับได้',
+            'sync_panel_status_connect_server_success': 'เชื่อมต่อกับคลาวด์แล้ว',
+            'sync_panel_status_client_to_server_success': 'บันทึกการตั้งค่าในเครื่องไปยังคลาวด์แล้ว!',
+            'sync_panel_status_config_updated': 'ซิงค์การตั้งค่าคลาวด์แล้ว',
+            'sync_panel_status_config_conflict_1': 'ตรวจพบการตั้งค่าที่ขัดแย้ง!',
+            'sync_panel_status_config_conflict_2': 'เวลาการตั้งค่าคลาวด์: ',
+            'sync_panel_status_config_conflict_3': 'เวลาการตั้งค่าในเครื่อง: ',
+            'sync_panel_status_config_conflict_4': 'ต้องการใช้การตั้งค่าคลาวด์หรือไม่? (กด OK เพื่อใช้การตั้งค่าคลาวด์, กด Cancel เพื่อใช้การตั้งค่าในเครื่อง)',
+            'sync_panel_status_config_conflict_cloud_newer': 'การตั้งค่าคลาวด์ใหม่กว่า',
+            'sync_panel_status_config_conflict_local_newer': 'การตั้งค่าในเครื่องใหม่กว่า',
+            'sync_panel_status_disconnect': 'การเชื่อมต่อขาดหาย กำลังพยายามเชื่อมต่อใหม่...',
 
             'array_editor_add_item_input_placeholder': 'กรุณาป้อน',
             'array_editor_add_item_input_placeholder_regex': 'กรุณาป้อน regex',
@@ -2654,6 +2874,30 @@
             'xpath_config_content_page_keywords_title': 'XPath de Palabras Clave de Contenido',
             'xpath_config_content_page_usernames_title': 'XPath de Usuario de Contenido',
 
+            'sync_config_title': 'Sincronización en la Nube',
+            'sync_config_server_url': 'Dirección del Servidor',
+            'sync_config_user_key': 'Clave de Usuario',
+            'sync_config_apply': 'Sincronizar',
+            'sync_config_delete': 'Eliminar Configuración en la Nube',
+            'sync_panel_status_connect_failed': 'Error de conexión: ',
+            'sync_panel_status_connect_error': 'Error de conexión: ',
+            'sync_panel_status_connect_success': 'Conexión exitosa',
+            'sync_panel_status_sync_failed': 'Error de sincronización: ',
+            'sync_panel_status_input_error': 'Por favor, configure primero la dirección del servidor y la clave de usuario',
+            'sync_panel_status_delete_success': 'Configuración en la nube eliminada con éxito',
+            'sync_panel_status_delete_failed': 'Error al eliminar la configuración en la nube: ',
+            'sync_panel_status_delete_confirm': '¿Está seguro de que desea eliminar la configuración en la nube? Esta acción no se puede deshacer.',
+            'sync_panel_status_connect_server_success': 'Conectado a la nube',
+            'sync_panel_status_client_to_server_success': '¡Configuración local guardada en la nube!',
+            'sync_panel_status_config_updated': 'Configuración en la nube sincronizada',
+            'sync_panel_status_config_conflict_1': '¡Se detectó un conflicto de configuración!',
+            'sync_panel_status_config_conflict_2': 'Hora de configuración en la nube: ',
+            'sync_panel_status_config_conflict_3': 'Hora de configuración local: ',
+            'sync_panel_status_config_conflict_4': '¿Usar configuración en la nube? (Aceptar para usar la configuración en la nube, Cancelar para usar la configuración local)',
+            'sync_panel_status_config_conflict_cloud_newer': 'La configuración en la nube es más reciente',
+            'sync_panel_status_config_conflict_local_newer': 'La configuración local es más reciente',
+            'sync_panel_status_disconnect': 'Conexión perdida, intentando reconectar...',
+
             'array_editor_add_item_input_placeholder': 'Por favor, introduce',
             'array_editor_add_item_input_placeholder_regex': 'Por favor, introduce regex',
             'array_editor_add_item': 'Añadir',
@@ -2739,6 +2983,30 @@
             'xpath_config_main_and_sub_page_usernames_title': 'XPath do Usuário Principal/Subpágina',
             'xpath_config_content_page_keywords_title': 'XPath de Palavras-chave do Conteúdo',
             'xpath_config_content_page_usernames_title': 'XPath do Usuário do Conteúdo',
+
+            'sync_config_title': 'Sincronização na Nuvem',
+            'sync_config_server_url': 'Endereço do Servidor',
+            'sync_config_user_key': 'Chave do Usuário',
+            'sync_config_apply': 'Sincronizar',
+            'sync_config_delete': 'Excluir Configuração da Nuvem',
+            'sync_panel_status_connect_failed': 'Falha na conexão: ',
+            'sync_panel_status_connect_error': 'Erro de conexão: ',
+            'sync_panel_status_connect_success': 'Conexão bem-sucedida',
+            'sync_panel_status_sync_failed': 'Falha na sincronização: ',
+            'sync_panel_status_input_error': 'Por favor, defina primeiro o endereço do servidor e a chave do usuário',
+            'sync_panel_status_delete_success': 'Configuração da nuvem excluída com sucesso',
+            'sync_panel_status_delete_failed': 'Falha ao excluir configuração da nuvem: ',
+            'sync_panel_status_delete_confirm': 'Tem certeza que deseja excluir a configuração da nuvem? Esta ação não pode ser desfeita.',
+            'sync_panel_status_connect_server_success': 'Conectado à nuvem',
+            'sync_panel_status_client_to_server_success': 'Configuração local salva na nuvem!',
+            'sync_panel_status_config_updated': 'Configuração da nuvem sincronizada',
+            'sync_panel_status_config_conflict_1': 'Detectado conflito de configuração!',
+            'sync_panel_status_config_conflict_2': 'Hora da configuração na nuvem: ',
+            'sync_panel_status_config_conflict_3': 'Hora da configuração local: ',
+            'sync_panel_status_config_conflict_4': 'Usar configuração da nuvem? (OK para usar configuração da nuvem, Cancelar para usar configuração local)',
+            'sync_panel_status_config_conflict_cloud_newer': 'Configuração da nuvem é mais recente',
+            'sync_panel_status_config_conflict_local_newer': 'Configuração local é mais recente',
+            'sync_panel_status_disconnect': 'Conexão perdida, tentando reconectar...',
 
             'array_editor_add_item_input_placeholder': 'Por favor, insira',
             'array_editor_add_item_input_placeholder_regex': 'Por favor, insira regex',
@@ -2826,6 +3094,30 @@
             'xpath_config_content_page_keywords_title': 'सामग्री पृष्ठ कीवर्ड XPath',
             'xpath_config_content_page_usernames_title': 'सामग्री पृष्ठ उपयोगकर्ता XPath',
 
+            'sync_config_title': 'क्लाउड सिंक',
+            'sync_config_server_url': 'सर्वर पता',
+            'sync_config_user_key': 'उपयोगकर्ता कुंजी',
+            'sync_config_apply': 'सिंक करें',
+            'sync_config_delete': 'क्लाउड कॉन्फ़िग हटाएं',
+            'sync_panel_status_connect_failed': 'कनेक्शन विफल: ',
+            'sync_panel_status_connect_error': 'कनेक्शन त्रुटि: ',
+            'sync_panel_status_connect_success': 'कनेक्शन सफल',
+            'sync_panel_status_sync_failed': 'सिंक विफल: ',
+            'sync_panel_status_input_error': 'कृपया पहले सर्वर पता और उपयोगकर्ता कुंजी सेट करें',
+            'sync_panel_status_delete_success': 'क्लाउड कॉन्फ़िग सफलतापूर्वक हटाया गया',
+            'sync_panel_status_delete_failed': 'क्लाउड कॉन्फ़िग हटाने में विफल: ',
+            'sync_panel_status_delete_confirm': 'क्या आप वाकई क्लाउड कॉन्फ़िग हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।',
+            'sync_panel_status_connect_server_success': 'क्लाउड से कनेक्ट हो गया',
+            'sync_panel_status_client_to_server_success': 'स्थानीय कॉन्फ़िग क्लाउड में सहेजा गया!',
+            'sync_panel_status_config_updated': 'क्लाउड कॉन्फ़िग सिंक हो गया',
+            'sync_panel_status_config_conflict_1': 'कॉन्फ़िग विरोध का पता चला!',
+            'sync_panel_status_config_conflict_2': 'क्लाउड कॉन्फ़िग समय: ',
+            'sync_panel_status_config_conflict_3': 'स्थानीय कॉन्फ़िग समय: ',
+            'sync_panel_status_config_conflict_4': 'क्या क्लाउड कॉन्फ़िग का उपयोग करें? (क्लाउड कॉन्फ़िग के लिए OK, स्थानीय कॉन्फ़िग के लिए रद्द करें)',
+            'sync_panel_status_config_conflict_cloud_newer': 'क्लाउड कॉन्फ़िग नया है',
+            'sync_panel_status_config_conflict_local_newer': 'स्थानीय कॉन्फ़िग नया है',
+            'sync_panel_status_disconnect': 'कनेक्शन टूट गया, पुनः कनेक्ट करने का प्रयास कर रहा है...',
+
             'array_editor_add_item_input_placeholder': 'कृपया दर्ज करें',
             'array_editor_add_item_input_placeholder_regex': 'कृपया रेगेक्स दर्ज करें',
             'array_editor_add_item': 'जोड़ें',
@@ -2912,6 +3204,30 @@
             'xpath_config_content_page_keywords_title': 'XPath Kata Kunci Halaman Konten',
             'xpath_config_content_page_usernames_title': 'XPath Pengguna Halaman Konten',
 
+            'sync_config_title': 'Sinkronisasi Cloud',
+            'sync_config_server_url': 'Alamat Server',
+            'sync_config_user_key': 'Kunci Pengguna',
+            'sync_config_apply': 'Sinkronkan',
+            'sync_config_delete': 'Hapus Konfigurasi Cloud',
+            'sync_panel_status_connect_failed': 'Gagal terhubung: ',
+            'sync_panel_status_connect_error': 'Error koneksi: ',
+            'sync_panel_status_connect_success': 'Berhasil terhubung',
+            'sync_panel_status_sync_failed': 'Sinkronisasi gagal: ',
+            'sync_panel_status_input_error': 'Harap atur alamat server dan kunci pengguna terlebih dahulu',
+            'sync_panel_status_delete_success': 'Berhasil menghapus konfigurasi cloud',
+            'sync_panel_status_delete_failed': 'Gagal menghapus konfigurasi cloud: ',
+            'sync_panel_status_delete_confirm': 'Apakah Anda yakin ingin menghapus konfigurasi cloud? Tindakan ini tidak dapat dibatalkan.',
+            'sync_panel_status_connect_server_success': 'Terhubung ke cloud',
+            'sync_panel_status_client_to_server_success': 'Konfigurasi lokal telah disimpan ke cloud!',
+            'sync_panel_status_config_updated': 'Konfigurasi cloud telah disinkronkan',
+            'sync_panel_status_config_conflict_1': 'Terdeteksi konflik konfigurasi!',
+            'sync_panel_status_config_conflict_2': 'Waktu konfigurasi cloud: ',
+            'sync_panel_status_config_conflict_3': 'Waktu konfigurasi lokal: ',
+            'sync_panel_status_config_conflict_4': 'Gunakan konfigurasi cloud? (Klik OK untuk menggunakan konfigurasi cloud, Batal untuk menggunakan konfigurasi lokal)',
+            'sync_panel_status_config_conflict_cloud_newer': 'Konfigurasi cloud lebih baru',
+            'sync_panel_status_config_conflict_local_newer': 'Konfigurasi lokal lebih baru',
+            'sync_panel_status_disconnect': 'Koneksi terputus, mencoba menghubungkan kembali...',
+
             'array_editor_add_item_input_placeholder': 'Silakan masukkan',
             'array_editor_add_item_input_placeholder_regex': 'Silakan masukkan regex',
             'array_editor_add_item': 'Tambah',
@@ -2997,6 +3313,30 @@
             'xpath_config_main_and_sub_page_usernames_title': 'XPath Người dùng Trang Chính/Phụ',
             'xpath_config_content_page_keywords_title': 'XPath Từ khóa Trang Nội dung',
             'xpath_config_content_page_usernames_title': 'XPath Người dùng Trang Nội dung',
+
+            'sync_config_title': 'Đồng bộ hóa Đám mây',
+            'sync_config_server_url': 'Địa chỉ Máy chủ',
+            'sync_config_user_key': 'Khóa Người dùng',
+            'sync_config_apply': 'Đồng bộ',
+            'sync_config_delete': 'Xóa Cấu hình Đám mây',
+            'sync_panel_status_connect_failed': 'Kết nối thất bại: ',
+            'sync_panel_status_connect_error': 'Lỗi kết nối: ',
+            'sync_panel_status_connect_success': 'Kết nối thành công',
+            'sync_panel_status_sync_failed': 'Đồng bộ thất bại: ',
+            'sync_panel_status_input_error': 'Vui lòng thiết lập địa chỉ máy chủ và khóa người dùng trước',
+            'sync_panel_status_delete_success': 'Xóa cấu hình đám mây thành công',
+            'sync_panel_status_delete_failed': 'Xóa cấu hình đám mây thất bại: ',
+            'sync_panel_status_delete_confirm': 'Bạn có chắc muốn xóa cấu hình đám mây? Hành động này không thể hoàn tác.',
+            'sync_panel_status_connect_server_success': 'Đã kết nối tới đám mây',
+            'sync_panel_status_client_to_server_success': 'Cấu hình cục bộ đã được lưu lên đám mây!',
+            'sync_panel_status_config_updated': 'Đã đồng bộ cấu hình đám mây',
+            'sync_panel_status_config_conflict_1': 'Phát hiện xung đột cấu hình!',
+            'sync_panel_status_config_conflict_2': 'Thời gian cấu hình đám mây: ',
+            'sync_panel_status_config_conflict_3': 'Thời gian cấu hình cục bộ: ',
+            'sync_panel_status_config_conflict_4': 'Sử dụng cấu hình đám mây? (Nhấn OK để dùng cấu hình đám mây, Hủy để dùng cấu hình cục bộ)',
+            'sync_panel_status_config_conflict_cloud_newer': 'Cấu hình đám mây mới hơn',
+            'sync_panel_status_config_conflict_local_newer': 'Cấu hình cục bộ mới hơn',
+            'sync_panel_status_disconnect': 'Mất kết nối, đang thử kết nối lại...',
 
             'array_editor_add_item_input_placeholder': 'Vui lòng nhập',
             'array_editor_add_item_input_placeholder_regex': 'Vui lòng nhập regex',
@@ -6111,6 +6451,12 @@
         panel.querySelector('#import-config').textContent = setTextfromTemplate('panel_bottom_import_button');
         panel.querySelector('#delete-domain-config').textContent = setTextfromTemplate('panel_bottom_delete_button');
         panel.querySelector('#save-domain-config').textContent = setTextfromTemplate('panel_bottom_save_button');
+        panel.querySelector('#sync-config-title').textContent = setTextfromTemplate('sync_config_title');
+        panel.querySelector('#sync-server-url').placeholder = setTextfromTemplate('sync_config_server_url');
+        panel.querySelector('#sync-user-key').placeholder = setTextfromTemplate('sync_config_user_key');
+        panel.querySelector('#sync-apply').textContent = setTextfromTemplate('sync_config_apply');
+        panel.querySelector('#sync-delete').textContent = setTextfromTemplate('sync_config_delete');
+    
 
         ['global', 'keywords', 'usernames', 'url', 'xpath', 'sync'].forEach(section => {
             const toggle = panel.querySelector(`[data-section="${section}"]`);
@@ -7241,6 +7587,9 @@ function showImportResult(addedCount, duplicateCount) {
                 case 'xpath':
                     titleSpan.textContent = templates.xpath_config_title;
                     break;
+                case 'sync':
+                    titleSpan.textContent = templates.sync_config_title;
+                    break;
             }
         });
 
@@ -7368,6 +7717,10 @@ function showImportResult(addedCount, duplicateCount) {
         document.querySelector('#delete-domain-config').textContent = templates.panel_bottom_delete_button;
         document.querySelector('#save-domain-config').textContent = templates.panel_bottom_save_button;
 
+        document.querySelector('#sync-server-url').placeholder = setTextfromTemplate('sync_config_server_url');
+        document.querySelector('#sync-user-key').placeholder = setTextfromTemplate('sync_config_user_key');
+        document.querySelector('#sync-apply').textContent = setTextfromTemplate('sync_config_apply');
+        document.querySelector('#sync-delete').textContent = setTextfromTemplate('sync_config_delete');
 
         //更新设置面板
         document.querySelector('#js-settings-title').textContent = setTextfromTemplate('settings_title');
@@ -7427,7 +7780,7 @@ function showImportResult(addedCount, duplicateCount) {
         const sync_server_url = document.getElementById('sync-server-url').value;
         const sync_user_key = document.getElementById('sync-user-key').value;
         if(!sync_server_url || !sync_user_key){
-            updateSyncStatus('请先设置服务器地址和用户密钥', 'error');
+            updateSyncStatus(setTextfromTemplate('sync_panel_status_input_error'), 'error');
             return false;
         }
         GLOBAL_CONFIG.SYNC_CONFIG.server_url = sync_server_url;
@@ -7464,7 +7817,7 @@ async function handleSyncInput() {
   const sync_user_key = document.querySelector('#sync-user-key').value;
 
   if(!sync_server_url || !sync_user_key){
-    updateSyncStatus('请先设置服务器地址和用户密钥', 'error');
+    updateSyncStatus(setTextfromTemplate('sync_panel_status_input_error'), 'error');
     return false;
   }
   console.log('sync_server_url:',sync_server_url);
@@ -7473,11 +7826,11 @@ async function handleSyncInput() {
   if (response.success) {
     GLOBAL_CONFIG.SYNC_CONFIG.server_url = sync_server_url;
     GLOBAL_CONFIG.SYNC_CONFIG.user_key = sync_user_key;
-    updateSyncStatus('连接成功', 'success');
+    updateSyncStatus(setTextfromTemplate('sync_panel_status_connect_success'), 'success');
     initWebSocket();
     return true;
   } else {
-    updateSyncStatus('连接失败: ' + response.message, 'error');
+    updateSyncStatus(setTextfromTemplate('sync_panel_status_connect_failed') + response.message, 'error');
     return false;
   }
 }
@@ -7511,33 +7864,48 @@ async function handleSyncInput() {
 
 
         // 删除云端配置
-        async function deleteCloudConfig() {
-            try {
-                if (!confirm('确定要删除云端配置吗？此操作不可恢复。')) {
-                    return;
-                }
-                const response = await gmFetch(`${GLOBAL_CONFIG.SYNC_CONFIG.server_url}/config`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-API-Key': GLOBAL_CONFIG.SYNC_CONFIG.user_key
-                    }
-                });
+async function deleteCloudConfig() {
+    try {
+        if (!confirm(setTextfromTemplate('sync_panel_status_delete_confirm'))) {
+            return;
+        }
 
-                if (!response.ok) {
-                    throw new Error(await response.text());
-                }
-
-                // // 重置同步配置
-                // GLOBAL_CONFIG.SYNC_CONFIG = {
-                //     lastSyncTime: 0,
-                //     version: 0
-                // };
-                saveGlobalConfig();
-                updateSyncStatus('删除云端配置成功', 'success');
-            } catch (error) {
-                throw new Error('删除云端配置失败: ' + error.message);
+        // 检查WebSocket连接状态
+        if (!wsConnection || wsConnection.readyState !== WebSocket.OPEN) {
+            initWebSocket();
+            if(wsConnection.readyState !== WebSocket.OPEN){
+                throw new Error(setTextfromTemplate('sync_panel_status_connect_error'));
             }
         }
+
+        // 发送删除请求
+        wsConnection.send(JSON.stringify({
+            type: 'delete',
+            userKey: GLOBAL_CONFIG.SYNC_CONFIG.user_key
+        }));
+
+        // 在onmessage中添加对delete类型消息的处理
+        const originalOnMessage = wsConnection.onmessage;
+        wsConnection.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            if (data.type === 'delete') {
+                if (data.success) {
+                    updateSyncStatus(setTextfromTemplate('sync_panel_status_delete_success'), 'success');
+                } else {
+                    updateSyncStatus(setTextfromTemplate('sync_panel_status_delete_failed') + (data.message || ''), 'error');
+                }
+                // 恢复原来的onmessage处理程序
+                wsConnection.onmessage = originalOnMessage;
+            } else {
+                // 对于非delete类型的消息,使用原来的处理程序
+                originalOnMessage(event);
+            }
+        };
+
+    } catch (error) {
+        updateSyncStatus(setTextfromTemplate('sync_panel_status_delete_failed') + error.message, 'error');
+    }
+}
 
         // 更新同步状态显示
         function updateSyncStatus(message, type = 'info') {
@@ -7605,13 +7973,9 @@ async function handleSyncInput() {
                     }));
                 }
 
-                updateSyncStatus('已连接到云端', 'success');
-                
-                
-                
+                updateSyncStatus(setTextfromTemplate('sync_panel_status_connect_server_success'), 'success');
+                 
             };
-
-
 
             wsConnection.onmessage = (event) => {
                 const data = JSON.parse(event.data);
@@ -7620,7 +7984,7 @@ async function handleSyncInput() {
                 switch(data.type) {
                     case 'firstSync':
                         if(data.message === 'firstSync_success'){
-                            updateSyncStatus('本地配置已保存至云端！', 'success');
+                            updateSyncStatus(setTextfromTemplate('sync_panel_status_client_to_server_success'), 'success');
                         }
                         break;
                     case 'update':
@@ -7628,18 +7992,19 @@ async function handleSyncInput() {
                             saveConfig(data,false,true);
                             GLOBAL_CONFIG.SYNC_CONFIG.lastSyncTime = Date.now();
                             if(data.message === 'config_updated'){
-                                updateSyncStatus('已同步云端配置', 'success');
+                                updateSyncStatus(setTextfromTemplate('sync_panel_status_config_updated'), 'success');
                             }
+                            
                         }
                         break;
                     case 'configConflict':
                         // 显示确认对话框让用户选择使用哪个配置
                         const useCloud = confirm(
-                            `检测到配置冲突!\n\n` +
-                            `云端配置时间: ${data.cloudTime}\n` + 
-                            `本地配置时间: ${data.localTime}\n\n` +
-                            `${data.newerConfig === 'cloud' ? '云端配置较新' : '本地配置较新'}\n\n` +
-                            `是否使用云端配置? (点击确定使用云端配置，点击取消使用本地配置)`
+                            setTextfromTemplate('sync_panel_status_config_conflict_1') + '\n\n' +
+                            setTextfromTemplate('sync_panel_status_config_conflict_2') + data.cloudTime + '\n' +
+                            setTextfromTemplate('sync_panel_status_config_conflict_3') + data.localTime + '\n\n' +
+                            setTextfromTemplate('sync_panel_status_config_conflict_4') + '\n\n' +
+                            (data.cloudTime > data.localTime ? setTextfromTemplate('sync_panel_status_config_conflict_cloud_newer') : setTextfromTemplate('sync_panel_status_config_conflict_local_newer'))
                         );
                         
                         // 发送用户选择
@@ -7647,6 +8012,13 @@ async function handleSyncInput() {
                             type: 'resolveConflict',
                             choice: useCloud ? 'useCloud' : 'useLocal'
                         }));
+                        break;
+                    case 'delete':
+                        if (data.success) {
+                            updateSyncStatus(setTextfromTemplate('sync_panel_status_delete_success'), 'success');
+                        } else {
+                            updateSyncStatus(setTextfromTemplate('sync_panel_status_delete_failed') + (data.message || ''), 'error');
+                        }
                         break;
                 }
                 
@@ -7656,7 +8028,7 @@ async function handleSyncInput() {
 
             wsConnection.onclose = () => {
                 console.log('WebSocket 连接已关闭');
-                updateSyncStatus('连接已断开，尝试重新连接...', 'warning');
+                updateSyncStatus(setTextfromTemplate('sync_panel_status_disconnect'), 'warning');
                 
                 // 尝试重新连接
                 // setTimeout(() => {
@@ -7667,7 +8039,7 @@ async function handleSyncInput() {
 
             wsConnection.onerror = (error) => {
                 console.error('WebSocket 错误:', error);
-                updateSyncStatus('连接错误', 'error');
+                updateSyncStatus(setTextfromTemplate('sync_panel_status_connect_error'), 'error');
             };
         }
 
@@ -7684,6 +8056,7 @@ async function handleSyncInput() {
             try {
                 // 创建一个临时的WebSocket连接来测试
                 const wsUrl = serverUrl + '/ws/config/' + userKey;
+                console.log('testConnection wsUrl:',wsUrl);
                 const ws = new WebSocket(wsUrl);
                 
                 return new Promise((resolve) => {
@@ -7723,10 +8096,10 @@ async function handleSyncInput() {
                 // 初始化 WebSocket 连接
                 initWebSocket();
             } else {
-                updateSyncStatus('连接失败: ' + response.message, 'error');
+                updateSyncStatus(setTextfromTemplate('sync_panel_status_connect_failed') + response.message, 'error');
             }
         } catch (error) {
-            updateSyncStatus('连接错误: ' + error.message, 'error');
+            updateSyncStatus(setTextfromTemplate('sync_panel_status_connect_error') + error.message, 'error');
         }
 
 
@@ -7756,7 +8129,7 @@ async function handleSyncInput() {
                 }
             } catch (error) {
                 console.error('同步失败:', error);
-                updateSyncStatus('同步失败: ' + error.message, 'error');
+                updateSyncStatus(setTextfromTemplate('sync_panel_status_sync_failed') + error.message, 'error');
             }
     }
 
@@ -7852,9 +8225,10 @@ async function handleSyncInput() {
                     }
                 });
             }
-            
-            if(!isPushConfigUpdate){
-                pushConfigUpdate()
+            if (GLOBAL_CONFIG.SYNC_CONFIG.server_url && GLOBAL_CONFIG.SYNC_CONFIG.user_key) {
+                if(!isPushConfigUpdate){
+                    pushConfigUpdate()
+                }
             }
             saveUserConfig(userConfig);
             debouncedHandleElements();
