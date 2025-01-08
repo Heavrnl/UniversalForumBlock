@@ -11,7 +11,8 @@
         "keywords_SECTION_COLLAPSED": true,
         "usernames_SECTION_COLLAPSED": true,
         "url_SECTION_COLLAPSED": true,
-        "xpath_SECTION_COLLAPSED": true
+        "xpath_SECTION_COLLAPSED": true,
+        "sync_SECTION_COLLAPSED": true
       },
       "EDITOR_STATES": {
         "keywords": false,
@@ -25,6 +26,11 @@
         "main_and_sub_page_user_xpath": false,
         "contentpage_title_xpath": false,
         "contentpage_user_xpath": false
+      },
+      "SYNC_CONFIG": {
+        "server_url": "",
+        "user_key": "",
+        "lastSyncTime": 0
       }
     },
     "userConfig": [
