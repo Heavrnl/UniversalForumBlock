@@ -132,6 +132,36 @@ async def websocket_endpoint(websocket: WebSocket, token: str):
                     config_path = get_user_config_path(user_id)
                     config_path.parent.mkdir(parents=True, exist_ok=True)
 
+
+                    # 处理删除请求
+                    if data.get("type") == "delete":
+                        try:
+                            if config_path.exists():
+                                config_path.unlink()  # 删除配置文件
+                                
+                                # 广播删除消息给该用户的所有连接
+                                for conn in active_connections[user_id]:
+                                    try:
+                                        await conn.send_json({
+                                            "type": "delete",
+                                            "success": True
+                                        })
+                                    except Exception:
+                                        continue
+                            else:
+                                await websocket.send_json({
+                                    "type": "delete",
+                                    "success": True,
+                                    "message": "Config file does not exist"
+                                })
+                        except Exception as e:
+                            await websocket.send_json({
+                                "type": "delete",
+                                "success": False,
+                                "message": str(e)
+                            })
+                        continue
+
                     # 第一次同步 
                     if data.get("type") == "firstSync":
                         # 如果云端配置不存在，则将接收到的数据保存为配置
