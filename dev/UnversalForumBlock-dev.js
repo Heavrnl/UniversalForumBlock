@@ -3105,7 +3105,7 @@
     const DEFAULT_CONFIG = [
         {
             "domain": "linux.do",
-            "mainPageUrlPatterns": ['^(?!.*\/t\/topic\/).*',],
+            "mainPageUrlPatterns": ['^(?!.*\\/t\\/topic\\/).*',],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/t/topic/.*'],
             "mainAndSubPageKeywords": {
@@ -3159,9 +3159,9 @@
         },
         {
             "domain": "hostloc.com",
-            "mainPageUrlPatterns": ['^/forum-.*$','/forum\.php\?mod=forumdisplay.*'],
+            "mainPageUrlPatterns": ['^/forum-.*$','/forum\\.php\\?mod=forumdisplay.*'],
             "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/thread-.*$','/forum\.php\?mod=viewthread.*'],
+            "contentPageUrlPatterns": ['^/thread-.*$','/forum\\.php\\?mod=viewthread.*'],
             "mainAndSubPageKeywords": {
                 "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
             },
@@ -3177,9 +3177,9 @@
         },
         {
             "domain": "bbs.3dmgame.com",
-            "mainPageUrlPatterns": ['^/forum-.*$','/forum\.php\?mod=forumdisplay.*'],
+            "mainPageUrlPatterns": ['^/forum-.*$','/forum\\.php\\?mod=forumdisplay.*'],
             "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/thread-.*$','/forum\.php\?mod=viewthread.*'],
+            "contentPageUrlPatterns": ['^/thread-.*$','/forum\\.php\\?mod=viewthread.*'],
             "mainAndSubPageKeywords": {
                 "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
             },
@@ -3231,7 +3231,7 @@
         },
         {
             "domain": "tieba.baidu.com",
-            "mainPageUrlPatterns": ['^/f\?kw=.*'],
+            "mainPageUrlPatterns": ['^/f\\?kw=.*'],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/p/.*'],
             "mainAndSubPageKeywords": {
@@ -3251,7 +3251,7 @@
         },
         {
             "domain": "v2ex.com",
-            "mainPageUrlPatterns": ['^/$','^/\?tab=.*','^/recent.*'],
+            "mainPageUrlPatterns": ['^/$','^/\\?tab=.*','^/recent.*'],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/t/.*'],
             "mainAndSubPageKeywords": {
@@ -3288,7 +3288,7 @@
         },
         {
             "domain": "www.douban.com",
-            "mainPageUrlPatterns": ['^/group/explore.*','^/group/\d+/.*'],
+            "mainPageUrlPatterns": ['^/group/explore.*','^/group/\\d+/.*'],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/group/topic/.*'],
             "mainAndSubPageKeywords": {
@@ -3339,14 +3339,24 @@
             // 使用 SAMPLE_TEMPLATE 作为基础模板，合并 DEFAULT_CONFIG 中的配置
             let isNewConfig = false;
             DEFAULT_CONFIG.forEach(defaultItem => {
+                // 添加调试日志
+                if (defaultItem.domain === 'hostloc.com') {
+                    console.log('转换前 hostloc.com 的 mainPageUrlPatterns:', defaultItem.mainPageUrlPatterns);
+                    console.log('转换前 hostloc.com 的第二个 pattern:', defaultItem.mainPageUrlPatterns[1]);
+                }
+                
                 const existingConfig = userConfig.find(config => config.domain === defaultItem.domain);
                 if (!existingConfig) {
-                    // 创建一个新的配置对象，基于 SAMPLE_TEMPLATE
-                    const newConfig = JSON.parse(JSON.stringify(SAMPLE_TEMPLATE));
-                    // 将 DEFAULT_CONFIG 中的配置合并到新对象中
+                    const newConfig = structuredClone(SAMPLE_TEMPLATE);
                     Object.assign(newConfig, defaultItem);
                     userConfig.push(newConfig);
                     isNewConfig = true;
+                    
+                    // 添加转换后的调试日志
+                    if (defaultItem.domain === 'hostloc.com') {
+                        console.log('转换后 hostloc.com 的 mainPageUrlPatterns:', newConfig.mainPageUrlPatterns);
+                        console.log('转换后 hostloc.com 的第二个 pattern:', newConfig.mainPageUrlPatterns[1]);
+                    }
                 }
             });
 
@@ -7898,10 +7908,11 @@ async function handleSyncInput() {
         }
 
         
-        
-
-
-        pushConfigUpdate()
+        if (GLOBAL_CONFIG.SYNC_CONFIG.server_url && GLOBAL_CONFIG.SYNC_CONFIG.user_key) {
+            if(!isPushConfigUpdate){
+                pushConfigUpdate()
+            }
+        }
         saveUserConfig(userConfig);
         debouncedHandleElements();
         updatePanelContent();
