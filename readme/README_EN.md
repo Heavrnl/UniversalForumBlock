@@ -1,4 +1,3 @@
-
 ![img](../img/logo-title.png)
 
 ## Introduction
@@ -12,6 +11,7 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 - 🔄 Support for importing/exporting configurations
 - 🌍 Support for multiple languages
 - 🌐 Support for custom site configuration
+- 🐳 Support for docker deployment cloud sync
 
 ## Interface Preview:
 
@@ -25,12 +25,22 @@ Universal Forum Block is a powerful universal forum content filter. Main feature
 
 ## Usage Guide
 
+### PC:
+
 1. Install a script manager (like Tampermonkey)
 2. Click to go to GreasyFork [Install Script](https://greasyfork.org/scripts/522871-%E9%80%9A%E7%94%A8%E8%AE%BA%E5%9D%9B%E5%B1%8F%E8%94%BD%E6%8F%92%E4%BB%B6)
 3. Visit supported forum websites
 4. Find our panel in the bottom left corner of the website to start using
 
 > **Special note:** On configured forums, when hovering over a username, a block button will appear. Click it to block the user instantly. The display mode of the block button can be switched between "Always Show" or "Show on Hover" in the settings panel.
+
+### Android:
+1. Use Microsoft Edge browser, which fully supports Tampermonkey
+
+2. Use AdGuard, go to Settings-Filters-User Scripts-Add User Script, enter
+```
+https://update.greasyfork.org/scripts/522871/%E9%80%9A%E7%94%A8%E8%AE%BA%E5%9D%9B%E5%B1%8F%E8%94%BD%E6%8F%92%E4%BB%B6.user.js
+```
 
 ## Supported Websites
 
@@ -52,6 +62,45 @@ English Forums:
 https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/english/config.json
 ```
 
+## Sync Server Deployment
+
+After successful deployment, find the admin key in the admin directory and copy it for use.
+
+Docker one-click deployment:
+```
+docker run -d --name universalforumblock -p 8006:8000 --restart unless-stopped heavrnl/universalforumblock:1.0.0
+```
+
+docker-compose:
+```yaml
+version: '3.8'
+
+services:
+  universalforumblock: 
+    image: heavrnl/universalforumblock:1.0.0  
+    ports:
+      - "8006:8000"
+    volumes:
+      - ./user_configs:/app/user_configs
+      - ./admin:/app/admin
+    restart: unless-stopped
+```
+
+nginx configuration:
+```
+location / {
+        proxy_pass http://127.0.0.1:8006;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+    }
+```
+
+Create new user:
+```
+curl -X POST "http://localhost:8006/users/create" -H "X-API-Key: YOUR_ADMIN_KEY"
+```
 
 ## Interface Description:
 
