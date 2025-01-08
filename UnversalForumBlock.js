@@ -265,7 +265,7 @@
             }
         },
         {
-            "domain": "www.zhihu.com",
+            "domain": "zhihu.com",
             "mainPageUrlPatterns": ['^/$','^/hot.*','^/follow.*','^/zvideo.*'],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/question/.*'],
@@ -284,7 +284,7 @@
             }
         },
         {
-            "domain": "www.douban.com",
+            "domain": "douban.com",
             "mainPageUrlPatterns": ['^/group/explore.*','^/group/\\d+/.*'],
             "subPageUrlPatterns": [],
             "contentPageUrlPatterns": ['^/group/topic/.*'],
@@ -1758,7 +1758,7 @@
     }
     let PANEL_SETTINGS = GM_getValue('panelSettings', {
         offset: 2,
-        expandMode: 'hover',
+        expandMode: 'click',
         collapsedWidth: 70,
         expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400,
         showBlockButton: 'hover'
