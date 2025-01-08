@@ -8,8 +8,9 @@
   <a href="./README.md">中文</a> |
   <a href="./readme/README_EN.md">English</a>
 </div>
+<br>
 
-<div align="center" style="margin-top: 15px;">
+<div align="center">
 
 [![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)][docker-url]
 
