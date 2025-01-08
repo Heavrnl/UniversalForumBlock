@@ -9,9 +9,19 @@
   <a href="./readme/README_EN.md">English</a>
 </div>
 
+<div align="center" style="margin-top: 15px;">
+
+[![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)][docker-url]
+
+[docker-url]: https://hub.docker.com/r/heavrnl/universalforumblock
+
+</div>
+
 ## 简介
 
 Universal Forum Block 是一个功能强大的通用论坛内容屏蔽插件。主要功能有：
+
+
 
 
 - 🎯 支持关键词、正则表达式进行精确过滤

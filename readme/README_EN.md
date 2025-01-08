@@ -1,5 +1,13 @@
 ![img](../img/logo-title.png)
 
+<div align="center">
+
+[![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)][docker-url]
+
+[docker-url]: https://hub.docker.com/r/heavrnl/universalforumblock
+
+</div>
+
 ## Introduction
 
 Universal Forum Block is a powerful universal forum content filter. Main features include:
