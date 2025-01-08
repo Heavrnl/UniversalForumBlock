@@ -17,10 +17,11 @@ Universal Forum Block 是一个功能强大的通用论坛内容屏蔽插件。�
 - 🎯 支持关键词、正则表达式进行精确过滤
 - 🚫 支持一键屏蔽用户，不再需要手动复制粘贴
 - 🔗 支持全局共享关键字和用户名，实现全网屏蔽
-- ☁️ 支持多个云端配置定时同步
+- ☁️ 支持多个配置定时同步
 - 🔄 支持导入/导出配置
 - 🌍 支持多种语言
 - 🌐 支持自定义站点配置
+- 🐳 支持docker部署云端同步
 
 
 ## 界面展示：
@@ -36,12 +37,22 @@ Universal Forum Block 是一个功能强大的通用论坛内容屏蔽插件。�
 
 ## 使用方法
 
+### PC:
+
 1. 安装脚本管理器（如 Tampermonkey）
 2. 点击前往GreasyFork [安装脚本](https://greasyfork.org/scripts/522871-%E9%80%9A%E7%94%A8%E8%AE%BA%E5%9D%9B%E5%B1%8F%E8%94%BD%E6%8F%92%E4%BB%B6)
 3. 访问支持的论坛网站
 4. 在网站左下角找到我们的面板开始使用
 
 > **特殊说明**：在已配置的论坛中，当鼠标移动到用户名上时会出现屏蔽按钮，点击即可一键屏蔽该用户。屏蔽按钮的显示方式可在设置面板中切换为"总是显示"或"悬停显示"。
+
+### 安卓:
+1.使用Microsft Edge浏览器，已完美支持油猴
+2.使用AdGuard，在设置-过滤-用户脚本-添加用户脚本，输入
+```
+https://update.greasyfork.org/scripts/522871/%E9%80%9A%E7%94%A8%E8%AE%BA%E5%9D%9B%E5%B1%8F%E8%94%BD%E6%8F%92%E4%BB%B6.user.js
+```
+
 
 ## 支持的网站
 
@@ -62,8 +73,50 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 ```
 https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/website/english/config.json
 ```
-
 ....
+
+## 同步服务器部署
+
+部署成功后在admin目录下找到admin key，复制使用
+
+docker 一键部署
+```
+docker run -d --name universalforumblock -p 8006:8000 --restart unless-stopped heavrnl/universalforumblock:1.0.0
+```
+
+
+docker-compose：
+```yaml
+version: '3.8'
+
+services:
+  universalforumblock: 
+    image: heavrnl/universalforumblock:1.0.0  
+    ports:
+      - "8006:8000"
+    volumes:
+      - ./user_configs:/app/user_configs
+      - ./admin:/app/admin
+    restart: unless-stopped
+
+```
+
+nginx配置：
+```
+location / {
+        proxy_pass http://127.0.0.1:8006;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+    }
+```
+
+创建新用户
+```
+curl -X POST "http://localhost:8006/users/create" -H "X-API-Key: YOUR_ADMIN_KEY"
+```
+
 
 ## 界面说明:
 
@@ -103,6 +156,12 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 | - 内容页用户 | 用于匹配内容页中的用户名 |
 
 
+#### 云端同步界面
+
+| 配置项 | 说明 |
+|--------|------|
+| 域名输入框 | 输入带有证书的云端同步服务器地址或域名，不需要前缀 |
+| 密钥输入框 | 用户唯一id，用于登录校验 |
 
 
 ## 进阶用法
@@ -182,6 +241,7 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 
 若想维护自己的屏蔽词列表，可以这样写
 
+
 ```javascript
 {
     "userConfig": [
@@ -194,6 +254,10 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
     ]
 }
 ```
+
+
+
+
 
 ### 自定义新网站
 
