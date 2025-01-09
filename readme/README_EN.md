@@ -74,10 +74,6 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 
 After successful deployment, find the admin key in the admin directory and copy it for use.
 
-Docker one-click deployment:
-```
-docker run -d --name universalforumblock -p 8006:8000 --restart unless-stopped heavrnl/universalforumblock:1.0.0
-```
 
 docker-compose:
 ```yaml
