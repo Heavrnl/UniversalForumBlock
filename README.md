@@ -91,11 +91,6 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 
 部署成功后在admin目录下找到admin key，复制使用
 
-docker 一键部署
-```
-docker run -d --name universalforumblock -p 8006:8000 --restart unless-stopped heavrnl/universalforumblock:1.0.0
-```
-
 
 docker-compose：
 ```yaml
