@@ -20,7 +20,7 @@
         },
         {
             "domain": "nodeseek.com",
-            "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/?$','^/search.*'],
+            "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/?$','^/search.*','^/\?sortBy.*','^/award.*'],
             "subPageUrlPatterns": ['/page*'],
             "contentPageUrlPatterns": ['/post*'],
             "mainAndSubPageKeywords": {
