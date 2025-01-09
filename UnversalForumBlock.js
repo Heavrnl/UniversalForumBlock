@@ -2,7 +2,7 @@
 // @name         通用论坛屏蔽插件
 // @name:en      Universal Forum Block
 // @namespace    https://github.com/Heavrnl/UniversalForumBlock
-// @version      1.1.0
+// @version      1.1.1
 // @description  通用的论坛贴子/用户屏蔽工具
 // @description:en  Universal forum post/user blocking tool
 // @author       Heavrnl
@@ -18,6 +18,9 @@
 // ==/UserScript==
 (function() {
     'use strict';
+    if (window.top !== window.self) {
+        return; 
+    } 
     let panelVisible = true;
     GM_registerMenuCommand("显示/隐藏面板", function() {
         panelVisible = !panelVisible;
@@ -120,7 +123,7 @@
         },
         {
             "domain": "nodeseek.com",
-            "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/?$','^/search.*'],
+            "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/?$','^/search.*','^/\\?sortBy.*','^/award.*'],
             "subPageUrlPatterns": ['/page*'],
             "contentPageUrlPatterns": ['/post*'],
             "mainAndSubPageKeywords": {
@@ -300,6 +303,42 @@
             },
             "contentPageUserKeywords": {
                 "xpath": ['//li//h4//a/text()']
+            }
+        },
+        {
+            "domain": "lowendtalk.com",
+            "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/$'],
+            "subPageUrlPatterns": ['/discussions/p*','^/categories/[^/]+/?$'],
+            "contentPageUrlPatterns": ['^/discussion/\\d+/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//li//div[@class="Title"]//a/text()']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": ['//li//span[contains(@class,"DiscussionAuthor")]//a/text()']
+            },
+            "contentPageKeywords": {
+                "xpath": ['//li//div[@class="Item-Body"]//p/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//li//a[@class="Username"]/text()']
+            }
+        },
+        {
+            "domain": "reddit.com",
+            "mainPageUrlPatterns": ['^/$','feed=home','^/r/[^/]+/$'],
+            "subPageUrlPatterns": [],
+            "contentPageUrlPatterns": ['^/r/.*/comments/.*'],
+            "mainAndSubPageKeywords": {
+                "xpath": ['//article[@aria-label]/@aria-label']
+            },
+            "mainAndSubPageUserKeywords": {
+                "xpath": []
+            },
+            "contentPageKeywords": {
+                "xpath": ['//shreddit-comment//div[@slot="comment"]//p/text()']
+            },
+            "contentPageUserKeywords": {
+                "xpath": ['//shreddit-comment//faceplate-tracker[@source="post_detail"]//a/text()']
             }
         }
     ]
@@ -2019,7 +2058,7 @@
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABOUlEQVR4AYTRAaaEUBgF4MmMCqVSiiAE2kO0sUCbCBiBdtAOWsAADFGqUCQlYdB5lSlv3qvm53Bzu191uuyMPsWd8pzyemdeu8vel7mbpgmapjGtj3LfPUkQxGO+wTAMZFmG2+12hjz+PXkKoigCRVHQdX0HOX4T3bIsaJoGRVEQx/GGpGn6DVk6cQVBQFVVUFUVsiwjSRJcr1c4joOiKECS5BHgXt4Ng2XZDRFFEXmeY50gCI6A+ezym7AiZVnCtm38Hs/zjoDXB7AibdtiHMcNmFGGYQ6B598NjuMQhiF830dd1wvWNA3mrvY+wT1pGTzPo+/7Bem6brkmCOKjRH0KziJJEoZh2JCfIXlHGSUh4cAgG8GGfP78GRwmxcXFWJP0BUzNmGFTVlYGSlwYSRndJURnJoqzMwAArDfg4/66PAAAAABJRU5ErkJggg==" height="14" width="14" style="vertical-align: text-bottom;">
                     </a>
                     <a class="external-link" style="color: #333 !important; text-decoration: none !important; display: flex; align-items: center;">
-                            <span style="margin-left: 3px; font-size: 12px;">v1.1.0</span>
+                            <span style="margin-left: 3px; font-size: 12px;">v1.1.1</span>
                     </a>
                 </div>
                 <div class="domain-info">

@@ -2,7 +2,7 @@
 // @name         通用论坛屏蔽插件
 // @name:en      Universal Forum Block
 // @namespace    https://github.com/Heavrnl/UniversalForumBlock
-// @version      1.0.0
+// @version      1.1.1
 // @description  通用的论坛贴子/用户屏蔽工具
 // @description:en  Universal forum post/user blocking tool
 // @author       Heavrnl
@@ -19,6 +19,12 @@
 
 (function() {
     'use strict';
+
+    // 检查是否在 iframe 中
+    if (window.top !== window.self) {
+        console.log('脚本在 iframe 中，不执行。');
+        return; // 退出脚本，不执行后续代码
+    }
 
     // 注册油猴菜单命令
     let panelVisible = true;
@@ -6289,7 +6295,7 @@
 
                     </a>
                     <a class="external-link" style="color: #333 !important; text-decoration: none !important; display: flex; align-items: center;">
-                            <span style="margin-left: 3px; font-size: 12px;">v1.0.0</span>
+                            <span style="margin-left: 3px; font-size: 12px;">v1.1.1</span>
                     </a>
                 </div>
                 <div class="domain-info">
