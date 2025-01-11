@@ -74,11 +74,10 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 
 After successful deployment, find the admin key in the admin directory and copy it for use.
 
+**Note: It is best to use a domain with a certificate because if the domain lacks a certificate, browsers will not allow links without certificates to be used on HTTPS pages, resulting in synchronization issues.**
 
 docker-compose:
 ```yaml
-version: '3.8'
-
 services:
   universalforumblock: 
     image: heavrnl/universalforumblock:1.0.0  
