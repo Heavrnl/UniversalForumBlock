@@ -79,8 +79,9 @@ After successful deployment, find the admin key in the admin directory and copy 
 docker-compose:
 ```yaml
 services:
-  universalforumblock: 
-    image: heavrnl/universalforumblock:1.0.0  
+  ufb-server:
+    container_name: ufb-server
+    image: heavrnl/universalforumblock:1.0.0
     ports:
       - "8006:8000"
     volumes:
