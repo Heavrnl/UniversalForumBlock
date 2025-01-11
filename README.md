@@ -96,15 +96,15 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 docker-compose：
 ```yaml
 services:
-  universalforumblock: 
-    image: heavrnl/universalforumblock:1.0.0  
+  ufb-server:
+    container_name: ufb-server
+    image: heavrnl/universalforumblock:1.0.0
     ports:
       - "8006:8000"
     volumes:
       - ./user_configs:/app/user_configs
       - ./admin:/app/admin
     restart: unless-stopped
-
 ```
 
 nginx配置：
