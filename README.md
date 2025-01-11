@@ -91,6 +91,7 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 
 部署成功后在admin目录下找到admin key，复制使用
 
+**注意，最好使用带证书的域名，因为如果不带证书，浏览器不允许在https页面使用不带证书的链接，导致无法使用同步**
 
 docker-compose：
 ```yaml
