@@ -95,8 +95,6 @@ https://raw.githubusercontent.com/Heavrnl/UniversalForumBlock/refs/heads/main/we
 
 docker-compose：
 ```yaml
-version: '3.8'
-
 services:
   universalforumblock: 
     image: heavrnl/universalforumblock:1.0.0  
