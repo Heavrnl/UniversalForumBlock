@@ -8,6 +8,7 @@ from typing import Dict, Any, List
 from pathlib import Path
 import time
 from asyncio import wait_for, TimeoutError
+import uvicorn
 
 app = FastAPI()
 
@@ -327,6 +328,6 @@ async def delete_config(current_user: str = Depends(verify_api_key)):
 
 
 if __name__ == "__main__":
-    import uvicorn
+
 
     uvicorn.run(app, host="0.0.0.0", port=8000)
