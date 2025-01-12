@@ -98,7 +98,7 @@ docker-compose：
 services:
   ufb-server:
     container_name: ufb-server
-    image: heavrnl/universalforumblock:1.0.0
+    image: heavrnl/universalforumblock:latest
     ports:
       - "8006:8000"
     volumes:
