@@ -1,0 +1,8 @@
+
+/.idea
+/server/.idea
+/server/user_configs
+server/client.py
+/server/admin
+server/1.txt
+server/admin_key.txt

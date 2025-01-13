@@ -5661,15 +5661,30 @@
 
     // 确保DOM加载完成后再执行
     if (document.readyState === 'loading') {
+        // 在 DOMContentLoaded 之前添加 MutationObserver
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+                if (mutation.addedNodes.length) {
+                    handleElements();
+                }
+            });
+        });
+
+        // 尽早开始观察 document.documentElement
+        observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM加载完成，开始执行');
-            debouncedHandleElements();
-            listenUrlChange(debouncedHandleElements); // 添加URL变化监听
+            handleElements();
+            listenUrlChange(debouncedHandleElements);
         });
     } else {
         console.log('DOM已经加载，直接执行');
-        debouncedHandleElements();
-        listenUrlChange(debouncedHandleElements); // 添加URL变化监听
+        handleElements();
+        listenUrlChange(debouncedHandleElements);
     }
 
     // 处理动态内容

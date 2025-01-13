@@ -1598,11 +1598,11 @@
     }
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            debouncedHandleElements();
+            handleElements();
             listenUrlChange(debouncedHandleElements);
         });
     } else {
-        debouncedHandleElements();
+        handleElements();
         listenUrlChange(debouncedHandleElements);
     }
     const observer = new MutationObserver((mutations) => {

@@ -307,7 +307,7 @@ async def update_config(config: Dict[str, Any], current_user: str = Depends(veri
     # 通过WebSocket广播配置更新
     if current_user in active_connections:
         for connection in active_connections[current_user]:
-            await connection.send_json({"type": "config_updated", "data": config})
+            await connection.send_json({"type": "update", "data": config})
 
     return {"status": "success"}
 
