@@ -5129,10 +5129,10 @@
     }
 
     // 将handleElements包装成防抖版本
-    const debouncedHandleElements = debounce(handleElements, 300);
+    const debouncedHandleElements = debounce(handleElements, 100);
 
     // 将removeWebsiteCSS包装成防抖版本
-    const debouncedRemoveWebsiteCSS = debounce(removeWebsiteCSS, 300);
+    const debouncedRemoveWebsiteCSS = debounce(removeWebsiteCSS, 100);
 
     // 判断页面类型
     function getPageType() {

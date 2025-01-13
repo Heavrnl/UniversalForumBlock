@@ -1157,8 +1157,8 @@
             timeout = setTimeout(later, wait);
         };
     }
-    const debouncedHandleElements = debounce(handleElements, 300);
-    const debouncedRemoveWebsiteCSS = debounce(removeWebsiteCSS, 300);
+    const debouncedHandleElements = debounce(handleElements, 100);
+    const debouncedRemoveWebsiteCSS = debounce(removeWebsiteCSS, 100);
     function getPageType() {
         const currentConfig = getDomainConfig(getCurrentDomain());
         if (!currentConfig) return 'unknown';
