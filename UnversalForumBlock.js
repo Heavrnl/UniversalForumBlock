@@ -762,6 +762,13 @@
         }
         processChildren(element, 1);
     }
+    let PANEL_SETTINGS = GM_getValue('panelSettings', {
+        offset: 2,
+        expandMode: 'click',
+        collapsedWidth: 70,
+        expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400,
+        showBlockButton: 'hover'
+    });
     function addBlockButtonsToUsernames(xpath, isContentPage) {
         if (!xpath) return;
         let attributeXpath = xpath;
@@ -1795,13 +1802,6 @@
             input.click();
         });
     }
-    let PANEL_SETTINGS = GM_getValue('panelSettings', {
-        offset: 2,
-        expandMode: 'click',
-        collapsedWidth: 70,
-        expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400,
-        showBlockButton: 'hover'
-    });
     function savePanelSettings() {
         GM_setValue('panelSettings', PANEL_SETTINGS);
         applyPanelSettings();

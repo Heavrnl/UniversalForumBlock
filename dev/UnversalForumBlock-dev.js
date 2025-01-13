@@ -4542,7 +4542,14 @@
     //     console.log('分词面板处理完成');
     // }
 
-
+    // 添加面板设置配置
+    let PANEL_SETTINGS = GM_getValue('panelSettings', {
+        offset: 2, // 百分比
+        expandMode: 'hover', // 'hover' or 'click'
+        collapsedWidth: 70, // 收起状态的宽度
+        expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400, // 展开状态的宽度,手机端290,PC端400
+        showBlockButton: 'hover' // 'hover' or 'always'
+    });
    
     
 
@@ -5965,14 +5972,7 @@
         });
     }
 
-    // 添加面板设置配置
-    let PANEL_SETTINGS = GM_getValue('panelSettings', {
-        offset: 2, // 百分比
-        expandMode: 'hover', // 'hover' or 'click'
-        collapsedWidth: 70, // 收起状态的宽度
-        expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400, // 展开状态的宽度,手机端290,PC端400
-        showBlockButton: 'hover' // 'hover' or 'always'
-    });
+    
 
     // 保存面板设置
     function savePanelSettings() {
