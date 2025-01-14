@@ -2,9 +2,10 @@
 
 <div align="center">
 
-[![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)][docker-url]
+[![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)][docker-url] [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%203.0-4CAF50?style=flat-square)](https://github.com/Heavrnl/UniversalForumBlock/blob/main/LICENSE) [![Release](https://img.shields.io/github/v/release/Heavrnl/UniversalForumBlock?style=flat-square&color=red)](https://github.com/Heavrnl/UniversalForumBlock/releases)
 
 [docker-url]: https://hub.docker.com/r/heavrnl/universalforumblock
+
 
 </div>
 
