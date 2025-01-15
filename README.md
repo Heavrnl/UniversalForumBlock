@@ -32,7 +32,7 @@ Universal Forum Block 是一个功能强大的通用论坛内容屏蔽插件。�
 - 🚫 支持一键屏蔽用户，不再需要手动复制粘贴
 - 🔗 支持全局共享关键字和用户名，实现全网屏蔽
 - ☁️ 支持多个配置定时同步
-- 🔄 支持导入/导出配置
+- 🔄 自动检测论坛框架
 - 🌍 支持多种语言
 - 🌐 支持自定义站点配置
 - 🐳 支持docker部署云端同步
@@ -71,9 +71,16 @@ https://update.greasyfork.org/scripts/522871/%E9%80%9A%E7%94%A8%E8%AE%BA%E5%9D%9
 
 ## 支持的网站
 
-中文论坛：hostloc，v2ex，nodeseek，linux.do，nodeloc，nga，恩山，3dmgame，百度贴吧，知乎，豆瓣，一亩三分地，巴哈姆特
+所有基于以下框架的论坛：
+- Discuz!
+- Discourse
+
+
+中文论坛：v2ex，nodeseek，nodeloc，nga，百度贴吧，知乎，豆瓣，巴哈姆特
 
 英文论坛：Lowendtalk, reddit
+
+
 
 如果需要支持其他网站，请在[issue](https://github.com/Heavrnl/UniversalForumBlock/issues)中提出或参考[自定义新网站](#自定义新网站)
 

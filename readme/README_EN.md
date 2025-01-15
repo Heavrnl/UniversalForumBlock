@@ -53,7 +53,11 @@ https://update.greasyfork.org/scripts/522871/%E9%80%9A%E7%94%A8%E8%AE%BA%E5%9D%9
 
 ## Supported Websites
 
-Chinese Forums: hostloc, v2ex, nodeseek, linux.do, nodeloc, nga, right.com.cn, 3dmgame, zhihu, douban, baidu tieba, bahamut
+All forums based on the following frameworks:
+- Discuz!
+- Discourse
+
+Chinese Forums: v2ex, nodeseek, nga, baidu tieba, zhihu, douban, bahamut
 
 English Forums: Lowendtalk, reddit
 
