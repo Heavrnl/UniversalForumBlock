@@ -2,7 +2,7 @@
 // @name         通用论坛屏蔽插件
 // @name:en      Universal Forum Block
 // @namespace    https://github.com/Heavrnl/UniversalForumBlock
-// @version      1.1.1
+// @version      1.2.0
 // @description  通用的论坛贴子/用户屏蔽工具
 // @description:en  Universal forum post/user blocking tool
 // @author       Heavrnl
@@ -3448,25 +3448,58 @@
         }
     }
 
-    const DEFAULT_CONFIG = [
-        {
-            "domain": "linux.do",
-            "mainPageUrlPatterns": ['^(?!.*\\/t\\/topic\\/).*',],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/t/topic/.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tr[@data-topic-id]//a[@role="heading"]//span/text()']
+    // 添加论坛框架模板
+    const FORUM_TEMPLATES = {
+        discuz: {
+            detect: () => {
+                return document.querySelector('meta[name="generator"][content*="Discuz"]') !== null ||
+                       document.querySelector('script[src*="discuz"]') !== null ||
+                       document.querySelector('a[href*="discuz.vip"]') !== null;
             },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tr[@data-topic-id]//td[@class="posters topic-list-data"]//a[@data-user-card]/@data-user-card']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div//article[@role="region"]//p[@dir="auto"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div//article[@role="region"]//div[@role="heading"]//a[@data-user-card]/@data-user-card']
+            config: {
+                "mainPageUrlPatterns": ['/forum-.*$','/forum\\.php\\?mod=forumdisplay.*'],
+                "contentPageUrlPatterns": ['/thread-.*$','/forum\\.php\\?mod=viewthread.*'],
+                "mainAndSubPageKeywords": {
+                    "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
+                },
+                "mainAndSubPageUserKeywords": {
+                    "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
+                },
+                "contentPageKeywords": {
+                    "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
+                },
+                "contentPageUserKeywords": {
+                    "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
+                }
             }
         },
+        discourse: {
+            detect: () => {
+                return document.querySelector('meta[name="generator"][content*="Discourse"]') !== null ||
+                       document.querySelector('script[src*="discourse"]') !== null ||
+                       document.querySelector('a[href*="discourse.org"]') !== null ||
+                       document.body.classList.contains('discourse');
+            },
+            config: {
+                "mainPageUrlPatterns": ['^/$','/c/','/hot','^/top(?!\\w)','/latest','/tags',],
+                "contentPageUrlPatterns": ['/t'],
+                "mainAndSubPageKeywords": {
+                    "xpath": ['//tr[@data-topic-id]//a[@role="heading"]//span/text()']
+                },
+                "mainAndSubPageUserKeywords": {
+                    "xpath": ['//tr[@data-topic-id]//td[@class="posters topic-list-data"]//a[@data-user-card]/@data-user-card']
+                },
+                "contentPageKeywords": {
+                    "xpath": ['//div//article[@role="region"]//p[@dir="auto"]/text()']
+                },
+                "contentPageUserKeywords": {
+                    "xpath": ['//div//article[@role="region"]//div[@role="heading"]//a[@data-user-card]/@data-user-card']
+                }
+            }
+        }
+    };
+
+    const DEFAULT_CONFIG = [
         {
             "domain": "nodeseek.com",
             "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/?$','^/search.*'],
@@ -3501,60 +3534,6 @@
             },
             "contentPageUserKeywords": {
                 "xpath": ['//div[@class="PostStream-item"]//li[@class="item-user"]//span/text()']
-            }
-        },
-        {
-            "domain": "hostloc.com",
-            "mainPageUrlPatterns": ['^/forum-.*$','/forum\\.php\\?mod=forumdisplay.*'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/thread-.*$','/forum\\.php\\?mod=viewthread.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
-            }
-        },
-        {
-            "domain": "bbs.3dmgame.com",
-            "mainPageUrlPatterns": ['^/forum-.*$','/forum\\.php\\?mod=forumdisplay.*'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/thread-.*$','/forum\\.php\\?mod=viewthread.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
-            }
-        },
-        {
-            "domain": "right.com.cn",
-            "mainPageUrlPatterns": ['^/forum/forum-.*$'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/forum/thread-.*$'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
             }
         },
         {
@@ -3752,8 +3731,33 @@
         userConfig = loadUserConfig();
     }
 
-    function getDomainConfig(domain){
-        return userConfig.find(config => config.domain === domain);
+    // 修改getDomainConfig函数
+    function getDomainConfig(domain) {
+        const config = userConfig.find(c => c.domain === domain);
+        
+        if (!config) {
+            // 如果没有找到配置，尝试检测论坛框架
+            for (const [framework, template] of Object.entries(FORUM_TEMPLATES)) {
+                if (template.detect()) {
+                    // 创建基础配置
+                    const newConfig = structuredClone(SAMPLE_TEMPLATE);
+                    // 合并框架特定配置
+                    Object.assign(newConfig, template.config);
+                    // 设置基本属性
+                    newConfig.domain = domain;
+                    newConfig.enabled = true;
+                    
+                    // 添加新配置到userConfig
+                    userConfig.push(newConfig);
+                    saveUserConfig(userConfig);
+                    console.log(`已为 ${domain} 自动创建 ${framework} 框架配置`);
+                    
+                    return newConfig;
+                }
+            }
+        }
+        
+        return config;
     }
 
     function addDomainConfig(configData) {
@@ -4545,7 +4549,7 @@
     // 添加面板设置配置
     let PANEL_SETTINGS = GM_getValue('panelSettings', {
         offset: 2, // 百分比
-        expandMode: 'hover', // 'hover' or 'click'
+        expandMode: 'click', // 'hover' or 'click'
         collapsedWidth: 70, // 收起状态的宽度
         expandedWidth: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 290 : 400, // 展开状态的宽度,手机端290,PC端400
         showBlockButton: 'hover' // 'hover' or 'always'
@@ -4903,6 +4907,17 @@
         if(getCurrentDomain().includes('v2ex.com')){
             removeCSS('.collapsed', 'display', 'none');
         }
+    }
+
+    // 论坛框架检测
+    function detectForumFramework() {
+        for (const [framework, template] of Object.entries(FORUM_TEMPLATES)) {
+            if (template.detect()) {
+                console.log(`检测到 ${framework} 论坛框架`);
+                return template;
+            }
+        }
+        return null;
     }
     
 
@@ -6310,7 +6325,7 @@
 
                     </a>
                     <a class="external-link" style="color: #333 !important; text-decoration: none !important; display: flex; align-items: center;">
-                            <span style="margin-left: 3px; font-size: 12px;">v1.1.1</span>
+                            <span style="margin-left: 3px; font-size: 12px;">v1.2.0</span>
                     </a>
                 </div>
                 <div class="domain-info">
