@@ -1,6 +1,6 @@
 {
 	"userConfig": [
-		{
+	{
             "domain": "lowendtalk.com",
             "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/$'],
             "subPageUrlPatterns": ['/discussions/p*','^/categories/[^/]+/?$'],
