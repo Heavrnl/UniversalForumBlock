@@ -2,7 +2,7 @@
 // @name         通用论坛屏蔽插件
 // @name:en      Universal Forum Block
 // @namespace    https://github.com/Heavrnl/UniversalForumBlock
-// @version      1.1.2
+// @version      1.2.0
 // @description  通用的论坛贴子/用户屏蔽工具
 // @description:en  Universal forum post/user blocking tool
 // @author       Heavrnl
@@ -102,25 +102,56 @@
             "regexPatterns": []
         }
     }
-    const DEFAULT_CONFIG = [
-        {
-            "domain": "linux.do",
-            "mainPageUrlPatterns": ['^(?!.*\\/t\\/topic\\/).*',],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/t/topic/.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tr[@data-topic-id]//a[@role="heading"]//span/text()']
+    const FORUM_TEMPLATES = {
+        discuz: {
+            detect: () => {
+                return document.querySelector('meta[name="generator"][content*="Discuz"]') !== null ||
+                       document.querySelector('script[src*="discuz"]') !== null ||
+                       document.querySelector('a[href*="discuz.vip"]') !== null;
             },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tr[@data-topic-id]//td[@class="posters topic-list-data"]//a[@data-user-card]/@data-user-card']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div//article[@role="region"]//p[@dir="auto"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div//article[@role="region"]//div[@role="heading"]//a[@data-user-card]/@data-user-card']
+            config: {
+                "mainPageUrlPatterns": ['/forum-.*$','/forum\\.php\\?mod=forumdisplay.*'],
+                "contentPageUrlPatterns": ['/thread-.*$','/forum\\.php\\?mod=viewthread.*'],
+                "mainAndSubPageKeywords": {
+                    "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
+                },
+                "mainAndSubPageUserKeywords": {
+                    "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
+                },
+                "contentPageKeywords": {
+                    "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
+                },
+                "contentPageUserKeywords": {
+                    "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
+                }
             }
         },
+        discourse: {
+            detect: () => {
+                return document.querySelector('meta[name="generator"][content*="Discourse"]') !== null ||
+                       document.querySelector('script[src*="discourse"]') !== null ||
+                       document.querySelector('a[href*="discourse.org"]') !== null ||
+                       document.body.classList.contains('discourse');
+            },
+            config: {
+                "mainPageUrlPatterns": ['^/$','/c/','/hot','^/top(?!\\w)','/latest','/tags',],
+                "contentPageUrlPatterns": ['/t'],
+                "mainAndSubPageKeywords": {
+                    "xpath": ['//tr[@data-topic-id]//a[@role="heading"]//span/text()']
+                },
+                "mainAndSubPageUserKeywords": {
+                    "xpath": ['//tr[@data-topic-id]//td[@class="posters topic-list-data"]//a[@data-user-card]/@data-user-card']
+                },
+                "contentPageKeywords": {
+                    "xpath": ['//div//article[@role="region"]//p[@dir="auto"]/text()']
+                },
+                "contentPageUserKeywords": {
+                    "xpath": ['//div//article[@role="region"]//div[@role="heading"]//a[@data-user-card]/@data-user-card']
+                }
+            }
+        }
+    };
+    const DEFAULT_CONFIG = [
         {
             "domain": "nodeseek.com",
             "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/?$','^/search.*','^/\\?sortBy.*','^/award.*'],
@@ -155,60 +186,6 @@
             },
             "contentPageUserKeywords": {
                 "xpath": ['//div[@class="PostStream-item"]//li[@class="item-user"]//span/text()']
-            }
-        },
-        {
-            "domain": "hostloc.com",
-            "mainPageUrlPatterns": ['^/forum-.*$','/forum\\.php\\?mod=forumdisplay.*'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/thread-.*$','/forum\\.php\\?mod=viewthread.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
-            }
-        },
-        {
-            "domain": "bbs.3dmgame.com",
-            "mainPageUrlPatterns": ['^/forum-.*$','/forum\\.php\\?mod=forumdisplay.*'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/thread-.*$','/forum\\.php\\?mod=viewthread.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
-            }
-        },
-        {
-            "domain": "right.com.cn",
-            "mainPageUrlPatterns": ['^/forum/forum-.*$'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/forum/thread-.*$'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
             }
         },
         {
@@ -410,8 +387,22 @@
     function updateUserConfig(){
         userConfig = loadUserConfig();
     }
-    function getDomainConfig(domain){
-        return userConfig.find(config => config.domain === domain);
+    function getDomainConfig(domain) {
+        const config = userConfig.find(c => c.domain === domain);
+        if (!config) {
+            for (const [framework, template] of Object.entries(FORUM_TEMPLATES)) {
+                if (template.detect()) {
+                    const newConfig = structuredClone(SAMPLE_TEMPLATE);
+                    Object.assign(newConfig, template.config);
+                    newConfig.domain = domain;
+                    newConfig.enabled = true;
+                    userConfig.push(newConfig);
+                    saveUserConfig(userConfig);
+                    return newConfig;
+                }
+            }
+        }
+        return config;
     }
     function addDomainConfig(configData) {
         if (!configData || !configData.domain) {
@@ -2058,7 +2049,7 @@
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABOUlEQVR4AYTRAaaEUBgF4MmMCqVSiiAE2kO0sUCbCBiBdtAOWsAADFGqUCQlYdB5lSlv3qvm53Bzu191uuyMPsWd8pzyemdeu8vel7mbpgmapjGtj3LfPUkQxGO+wTAMZFmG2+12hjz+PXkKoigCRVHQdX0HOX4T3bIsaJoGRVEQx/GGpGn6DVk6cQVBQFVVUFUVsiwjSRJcr1c4joOiKECS5BHgXt4Ng2XZDRFFEXmeY50gCI6A+ezym7AiZVnCtm38Hs/zjoDXB7AibdtiHMcNmFGGYQ6B598NjuMQhiF830dd1wvWNA3mrvY+wT1pGTzPo+/7Bem6brkmCOKjRH0KziJJEoZh2JCfIXlHGSUh4cAgG8GGfP78GRwmxcXFWJP0BUzNmGFTVlYGSlwYSRndJURnJoqzMwAArDfg4/66PAAAAABJRU5ErkJggg==" height="14" width="14" style="vertical-align: text-bottom;">
                     </a>
                     <a class="external-link" style="color: #333 !important; text-decoration: none !important; display: flex; align-items: center;">
-                            <span style="margin-left: 3px; font-size: 12px;">v1.1.2</span>
+                            <span style="margin-left: 3px; font-size: 12px;">v1.2.0</span>
                     </a>
                 </div>
                 <div class="domain-info">
