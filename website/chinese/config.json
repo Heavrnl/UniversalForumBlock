@@ -1,23 +1,5 @@
 {
 	"userConfig": [
-		{
-            "domain": "linux.do",
-            "mainPageUrlPatterns": ['^(?!.*\/t\/topic\/).*',],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/t/topic/.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tr[@data-topic-id]//a[@role="heading"]//span/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tr[@data-topic-id]//td[@class="posters topic-list-data"]//a[@data-user-card]/@data-user-card']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div//article[@role="region"]//p[@dir="auto"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div//article[@role="region"]//div[@role="heading"]//a[@data-user-card]/@data-user-card']
-            }
-        },
         {
             "domain": "nodeseek.com",
             "mainPageUrlPatterns": ['^/$','^/categories/[^/]+/?$','^/search.*','^/\?sortBy.*','^/award.*'],
@@ -52,78 +34,6 @@
             },
             "contentPageUserKeywords": {
                 "xpath": ['//div[@class="PostStream-item"]//li[@class="item-user"]//span/text()']
-            }
-        },
-        {
-            "domain": "hostloc.com",
-            "mainPageUrlPatterns": ['^/forum-.*$','/forum\.php\?mod=forumdisplay.*'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/thread-.*$','/forum\.php\?mod=viewthread.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
-            }
-        },
-        {
-            "domain": "1point3acres.com",
-            "mainPageUrlPatterns": ['^/bbs/forum-.*$','/bbs/forum\.php\?mod=forumdisplay.*'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/bbs/thread-.*$','/bbs/forum\.php\?mod=viewthread.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
-            }
-        },
-        {
-            "domain": "bbs.3dmgame.com",
-            "mainPageUrlPatterns": ['^/forum-.*$','/forum\.php\?mod=forumdisplay.*'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/thread-.*$','/forum\.php\?mod=viewthread.*'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
-            }
-        },
-        {
-            "domain": "right.com.cn",
-            "mainPageUrlPatterns": ['^/forum/forum-.*$'],
-            "subPageUrlPatterns": [],
-            "contentPageUrlPatterns": ['^/forum/thread-.*$'],
-            "mainAndSubPageKeywords": {
-                "xpath": ['//tbody//a[@class="s xst"]/text()','//li/a/text()']
-            },
-            "mainAndSubPageUserKeywords": {
-                "xpath": ['//tbody//td[@class="by"]//a/text()','//li//span[@class="by"]/text()']
-            },
-            "contentPageKeywords": {
-                "xpath": ['//div[@id]//td[@class="t_f"]/text()','//div[@class="plc cl"]//div[@class="message"]/text()']
-            },
-            "contentPageUserKeywords": {
-                "xpath": ['//div[@id]//tbody//a[@class="xw1"]/text()','//div[@class="plc cl"]//a[@class="blue"]/text()']
             }
         },
         {
