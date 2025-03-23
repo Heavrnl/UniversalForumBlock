@@ -11,6 +11,8 @@
 
 ## Introduction
 
+> Since isolation was not considered during the initial development, to prevent affecting the CSS styles of regular web pages, it is strongly recommended to restrict // @match in the script header to the forums you frequently use.
+
 Universal Forum Block is a powerful universal forum content filter. Main features include:
 
 - 🎯 Support for keywords and regular expressions for precise filtering
